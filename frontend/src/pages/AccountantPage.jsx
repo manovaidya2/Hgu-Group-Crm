@@ -41,13 +41,13 @@ function CardRequestDate({ date, label = 'Submitted', actor, actorLabel = 'Added
     <div className="mt-3 flex items-end justify-between gap-2">
       <div className="min-w-0">
         {showAdded && (
-          <p className="flex items-center gap-1 text-[11px] font-medium text-violet-600">
+          <p className="flex items-center gap-1 text-[11px] font-medium text-sky-600">
             <User className="h-3 w-3 flex-shrink-0"/>
             <span>{actorLabel} by Viewer Counselor: <span className="font-bold">{actor.name}</span></span>
           </p>
         )}
         {showUpdated && (
-          <p className="flex items-center gap-1 text-[11px] font-medium text-violet-600">
+          <p className="flex items-center gap-1 text-[11px] font-medium text-sky-600">
             <User className="h-3 w-3 flex-shrink-0"/>
             <span>Updated by Viewer Counselor: <span className="font-bold">{updatedActor.name}</span></span>
           </p>
@@ -99,7 +99,7 @@ function PaymentInfo({ tx, className = '' }) {
       <div className="flex items-center gap-2 flex-wrap">
         <span className="font-semibold text-emerald-700">{fmt(tx.amount)}</span>
         {tx.mode && <span className="text-xs bg-muted px-1.5 py-0.5 rounded font-medium">via {tx.mode}</span>}
-        {tx.paidToAccountLabel && <span className="text-xs bg-indigo-50 text-indigo-700 border border-indigo-200 px-1.5 py-0.5 rounded font-medium">→ {tx.paidToAccountLabel}</span>}
+        {tx.paidToAccountLabel && <span className="text-xs bg-teal-50 text-teal-700 border border-teal-200 px-1.5 py-0.5 rounded font-medium">→ {tx.paidToAccountLabel}</span>}
         {tx.paidAt && <span className="text-xs text-muted-foreground">{fmtD(tx.paidAt)}</span>}
       </div>
       {isUPI && tx.upiId    && <div className="text-xs text-muted-foreground">UPI ID: <b>{tx.upiId}</b></div>}
@@ -111,9 +111,9 @@ function PaymentInfo({ tx, className = '' }) {
       {tx.note && <div className="text-xs text-muted-foreground">Note: {tx.note}</div>}
       <UtrDuplicateWarning tx={tx}/>
       {tx.paidToAccountLabel && (
-        <div className="mt-1 bg-indigo-50 border border-indigo-200 rounded px-2.5 py-1.5">
-          <span className="text-xs font-bold text-indigo-500 uppercase tracking-wider mr-1.5">Paid To</span>
-          <span className="text-xs font-semibold text-indigo-800">{tx.paidToAccountLabel}</span>
+        <div className="mt-1 bg-teal-50 border border-teal-200 rounded px-2.5 py-1.5">
+          <span className="text-xs font-bold text-teal-500 uppercase tracking-wider mr-1.5">Paid To</span>
+          <span className="text-xs font-semibold text-teal-800">{tx.paidToAccountLabel}</span>
         </div>
       )}
     </div>
@@ -138,7 +138,7 @@ function FeePaymentPanel({ payment, status = 'pending_accountant', accMap = {} }
           <PaymentInfo tx={tx}/>
           {tx.paymentScreenshot && (
             <a href={`${MEDIA}${tx.paymentScreenshot}`} target="_blank" rel="noreferrer"
-              className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-100"
+              className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5 hover:bg-teal-100"
               onClick={e => e.stopPropagation()}>
               <Download className="h-3 w-3"/>View Payment Screenshot
             </a>
@@ -151,9 +151,9 @@ function FeePaymentPanel({ payment, status = 'pending_accountant', accMap = {} }
 }
 
 const STATUS_C = {
-  Counselor_Approved:'bg-indigo-100 text-indigo-700',
+  Counselor_Approved:'bg-teal-100 text-teal-700',
   Accountant_Pending:'bg-amber-100 text-amber-700',
-  Sent_To_University:'bg-purple-100 text-purple-700',
+  Sent_To_University:'bg-cyan-100 text-cyan-700',
   University_Rejected:'bg-orange-100 text-orange-700',
   Enrolled:'bg-emerald-100 text-emerald-700',
 };
@@ -354,7 +354,7 @@ function VerifiedRecordModal({ record, onClose }) {
           {isAdm && (
             <div className="border rounded-lg p-3 space-y-1">
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Admission Details</p>
-              <div className="text-sm">Status moved to: <span className="font-medium text-purple-700">Sent to University</span></div>
+              <div className="text-sm">Status moved to: <span className="font-medium text-cyan-700">Sent to University</span></div>
               {record.note && <div className="text-sm text-muted-foreground">Note: {record.note}</div>}
             </div>
           )}
@@ -397,14 +397,14 @@ function PaidToAccountBox({ tx, accMap }) {
   const isUPI = (acc?.mode || tx.mode) === 'UPI';
   const isBank = (acc?.mode) === 'Bank Transfer';
   return (
-    <div className="mt-2 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-2.5 space-y-1">
+    <div className="mt-2 bg-teal-50 border border-teal-200 rounded-lg px-3 py-2.5 space-y-1">
       <div className="flex items-center gap-2">
-        <span className="text-xs font-bold text-indigo-600 uppercase tracking-wider">Paid To</span>
-        <span className="text-sm font-semibold text-indigo-800">{label}</span>
+        <span className="text-xs font-bold text-teal-600 uppercase tracking-wider">Paid To</span>
+        <span className="text-sm font-semibold text-teal-800">{label}</span>
         {acc?.mode && <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${isUPI ? 'bg-blue-100 text-blue-700' : 'bg-emerald-100 text-emerald-700'}`}>{acc.mode}</span>}
       </div>
       {acc ? (
-        <div className="space-y-0.5 text-xs text-indigo-700">
+        <div className="space-y-0.5 text-xs text-teal-700">
           {isUPI && acc.upiId    && <div>UPI ID: <span className="font-mono font-bold">{acc.upiId}</span></div>}
           {isUPI && acc.upiName  && <div>Name: <span className="font-semibold">{acc.upiName}</span></div>}
           {isBank && acc.bankName       && <div>Bank: <span className="font-semibold">{acc.bankName}</span></div>}
@@ -414,7 +414,7 @@ function PaidToAccountBox({ tx, accMap }) {
           {isBank && acc.branch         && <div>Branch: <span className="font-semibold">{acc.branch}</span></div>}
         </div>
       ) : (
-        <div className="text-xs text-indigo-600">{label}</div>
+        <div className="text-xs text-teal-600">{label}</div>
       )}
     </div>
   );
@@ -610,11 +610,11 @@ export default function AccountantPage() {
 
       // ACTION LABELS for student statusHistory entries
       const ACTION_CONFIG = {
-        'Sent_To_University':  { label: 'Sent to University',        badge: 'bg-purple-100 text-purple-700',  icon: '🎓' },
+        'Sent_To_University':  { label: 'Sent to University',        badge: 'bg-cyan-100 text-cyan-700',  icon: '🎓' },
         'University_Rejected': { label: 'Rejected by University',    badge: 'bg-orange-100 text-orange-700',  icon: '🏫' },
         'Accountant_Rejected': { label: 'Forwarded to Counselor',    badge: 'bg-red-100 text-red-700',        icon: '↩' },
         'Accountant_Pending':  { label: 'Kept Pending',              badge: 'bg-amber-100 text-amber-700',    icon: '⏳' },
-        'Counselor_Approved':  { label: 'Received from Counselor',   badge: 'bg-indigo-100 text-indigo-700',  icon: '📥' },
+        'Counselor_Approved':  { label: 'Received from Counselor',   badge: 'bg-teal-100 text-teal-700',  icon: '📥' },
         'Enrolled':            { label: 'Enrolled by University',    badge: 'bg-emerald-100 text-emerald-700',icon: '✅' },
         'Rejected':            { label: 'Rejected → Center',         badge: 'bg-red-100 text-red-700',        icon: '✗' },
         'Changes_Requested':   { label: 'Changes Requested → Center',badge: 'bg-amber-100 text-amber-700',    icon: '✏' },
@@ -941,7 +941,7 @@ export default function AccountantPage() {
         {[
           ['Pending Actions', totalPending, 'text-amber-600'],
           ['Fee Payments', feePayPending.total, 'text-orange-600'],
-          ['Doc Payments', docPaymentsList.total, 'text-purple-600'],
+          ['Doc Payments', docPaymentsList.total, 'text-cyan-600'],
           ['Verified Records', historyList.total, 'text-emerald-600'],
         ].map(([l,v,c]) => (
           <Card key={l}><CardContent className="pt-4 pb-3 text-center">
@@ -960,12 +960,12 @@ export default function AccountantPage() {
       >
         <TabsList className="flex flex-wrap h-auto gap-1 bg-slate-100 p-1 rounded-xl">
           {[
-            { val:'scans',       label:'Scan Review',    count: scanReviewList.total,                                    dot:'bg-violet-500' },
+            { val:'scans',       label:'Scan Review',    count: scanReviewList.total,                                    dot:'bg-sky-500' },
             { val:'admissions',  label:'Admissions',     count: admissionsList.total,          dot:'bg-blue-500'   },
             { val:'unireject',   label:'Uni Rejected',   count: uniRejectedList.total,    dot:'bg-orange-500' },
             { val:'amountsettle',label:'Amount Settle',  count: amountSettleList.total, dot:'bg-emerald-500', badge: pendingSettleCount },
             { val:'feepay',      label:'Fee Payments',   count: feePayPending.total,    dot:'bg-amber-500'  },
-            { val:'docs',        label:'Doc Request',    count: docRequestList.total,                  dot:'bg-indigo-500' },
+            { val:'docs',        label:'Doc Request',    count: docRequestList.total,                  dot:'bg-teal-500' },
             { val:'payments',    label:'Doc Payments',   count: docPaymentsList.total,            dot:'bg-teal-500'   },
             { val:'history',     label:'History',        count: historyList.total,            dot:''              },
           ].map(({ val, label, count, dot, badge }) => (
@@ -1080,12 +1080,12 @@ export default function AccountantPage() {
           {scanDocs.length===0
             ?<div className="text-center py-10 text-muted-foreground">No scanned documents pending review</div>
             :scanDocs.map(d=>(
-              <Card key={d._id} className="border-violet-200">
+              <Card key={d._id} className="border-sky-200">
                 <CardContent className="p-4 flex items-start justify-between gap-3">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="font-medium">{d.name}</span>
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-violet-100 text-violet-700">Scan Received</span>
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-sky-100 text-sky-700">Scan Received</span>
                     </div>
                     <div className="text-sm text-muted-foreground flex items-center gap-2 flex-wrap">
   Student: {d.student?.name}
@@ -1106,7 +1106,7 @@ export default function AccountantPage() {
                       <div key={i} className="text-xs text-muted-foreground mt-0.5">{h.status?.replace(/_/g,' ')} · {h.note}</div>
                     ))}
                   </div>
-                  <Button size="sm" className="bg-violet-600 hover:bg-violet-700" onClick={()=>forwardScanToCounselor(d._id)}>
+                  <Button size="sm" className="bg-sky-600 hover:bg-sky-700" onClick={()=>forwardScanToCounselor(d._id)}>
                     <Send className="h-3.5 w-3.5 mr-1"/>Forward to Counselor
                   </Button>
                 </CardContent>
@@ -1127,7 +1127,7 @@ export default function AccountantPage() {
                     <span className={`text-xs px-2 py-0.5 rounded-full ${STATUS_C[s.applicationStatus]||'bg-gray-100 text-gray-700'}`}>{s.applicationStatus?.replace(/_/g,' ')}</span>
                   </div>
                   <div className="text-sm text-muted-foreground flex items-center gap-2">{s.center?.name} · {s.courseName}{s.enrollmentNumber && <span className="text-xs font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">{s.enrollmentNumber}</span>}</div>
-                  {s.university?.name && <div className="text-xs text-purple-600">🎓 {s.university.name}</div>}
+                  {s.university?.name && <div className="text-xs text-cyan-600">🎓 {s.university.name}</div>}
                   {s.submissionDocs?.length > 0 && <div className="text-xs text-muted-foreground flex items-center gap-1 mt-0.5"><Paperclip className="h-3 w-3"/>{s.submissionDocs.length} docs attached</div>}
                   <FeePaymentPanel payment={admissionFeeMap[String(s._id)]} status="pending_accountant" accMap={payAccounts}/>
                 </div>
@@ -1194,7 +1194,7 @@ export default function AccountantPage() {
   <div className="mt-1.5">
     <a href={`${(import.meta.env.VITE_API_URL||'http://localhost:5000/api').replace('/api','')}${tx.paymentScreenshot}`}
       target="_blank" rel="noreferrer"
-      className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-100 transition-colors">
+      className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5 hover:bg-teal-100 transition-colors">
       <Download className="h-3 w-3"/>View Payment Screenshot
     </a>
   </div>
@@ -1334,7 +1334,7 @@ export default function AccountantPage() {
                             <a
                               href={`${(import.meta.env.VITE_API_URL||'http://localhost:5000/api').replace('/api','')}${tx.paymentScreenshot}`}
                               target="_blank" rel="noreferrer"
-                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-100 transition-colors mt-0.5"
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5 hover:bg-teal-100 transition-colors mt-0.5"
                             >
                               <Download className="h-3 w-3"/>View Payment Screenshot
                             </a>
@@ -1360,7 +1360,7 @@ export default function AccountantPage() {
                   type="checkbox"
                   checked={filtDocs.length > 0 && filtDocs.every(d => selectedDocIds.includes(String(d._id)))}
                   onChange={e => setSelectedDocIds(e.target.checked ? filtDocs.map(d => String(d._id)) : [])}
-                  className="h-4 w-4 accent-indigo-600"
+                  className="h-4 w-4 accent-teal-600"
                 />
                 Select all visible doc fee checks
               </label>
@@ -1379,7 +1379,7 @@ export default function AccountantPage() {
                       type="checkbox"
                       checked={selectedDocIds.includes(String(d._id))}
                       onChange={() => toggleDocSelection(d._id)}
-                      className="h-4 w-4 accent-indigo-600"
+                      className="h-4 w-4 accent-teal-600"
                       aria-label={`Select ${d.name}`}
                     />
                     <span className="font-medium">{d.name}</span>
@@ -1423,7 +1423,7 @@ export default function AccountantPage() {
                       {p.paymentScreenshot && (
                         <a href={`${(import.meta.env.VITE_API_URL||'http://localhost:5000/api').replace('/api','')}${p.paymentScreenshot}`}
                           target="_blank" rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-100 transition-colors">
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5 hover:bg-teal-100 transition-colors">
                           <Download className="h-3 w-3"/>View Payment Screenshot
                         </a>
                       )}
@@ -1455,7 +1455,7 @@ export default function AccountantPage() {
                   type="checkbox"
                   checked={filtPayDocs.length > 0 && filtPayDocs.every(d => selectedDocIds.includes(String(d._id)))}
                   onChange={e => setSelectedDocIds(e.target.checked ? filtPayDocs.map(d => String(d._id)) : [])}
-                  className="h-4 w-4 accent-indigo-600"
+                  className="h-4 w-4 accent-teal-600"
                 />
                 Select all visible payments
               </label>
@@ -1474,7 +1474,7 @@ export default function AccountantPage() {
                       type="checkbox"
                       checked={selectedDocIds.includes(String(d._id))}
                       onChange={() => toggleDocSelection(d._id)}
-                      className="h-4 w-4 accent-indigo-600"
+                      className="h-4 w-4 accent-teal-600"
                       aria-label={`Select ${d.name}`}
                     />
                     <span className="font-medium">{d.name}</span>
@@ -1495,7 +1495,7 @@ export default function AccountantPage() {
                         <div className="mt-1.5">
                           <a href={`${(import.meta.env.VITE_API_URL||'http://localhost:5000/api').replace('/api','')}${p.paymentScreenshot}`}
                             target="_blank" rel="noreferrer"
-                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-100 transition-colors">
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5 hover:bg-teal-100 transition-colors">
                             <Download className="h-3 w-3"/>View Payment Screenshot
                           </a>
                         </div>
@@ -1634,7 +1634,7 @@ export default function AccountantPage() {
                                 <a
                                   href={`${(import.meta.env.VITE_API_URL||'http://localhost:5000/api').replace('/api','')}${p.paymentScreenshot}`}
                                   target="_blank" rel="noreferrer"
-                                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-100 transition-colors mt-0.5"
+                                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5 hover:bg-teal-100 transition-colors mt-0.5"
                                 >
                                   <Download className="h-3 w-3"/>View Payment Screenshot
                                 </a>
@@ -1671,7 +1671,7 @@ export default function AccountantPage() {
               className={`border rounded-lg px-4 py-3 bg-card text-sm cursor-pointer hover:border-primary/40 transition-colors ${
                 rec.type === 'student_action' && rec.actionStatus === 'University_Rejected' ? 'border-orange-200 bg-orange-50/30' :
                 rec.type === 'student_action' && rec.actionStatus === 'Accountant_Rejected' ? 'border-red-100' :
-                rec.type === 'student_action' && rec.actionStatus === 'Sent_To_University'  ? 'border-purple-100' :
+                rec.type === 'student_action' && rec.actionStatus === 'Sent_To_University'  ? 'border-cyan-100' :
                 ''
               }`}
               onClick={() => setSelectedRecord(rec)}>

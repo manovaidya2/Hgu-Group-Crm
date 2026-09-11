@@ -19,7 +19,7 @@ export const AVATAR_OPTIONS = [
   { seed: 'hamster', label: 'Hamster', emoji: '🐹', bg: 'linear-gradient(135deg,#ffedd5,#fb7185)' },
   { seed: 'wolf', label: 'Wolf', emoji: '🐺', bg: 'linear-gradient(135deg,#e2e8f0,#64748b)' },
   { seed: 'cowboy', label: 'Cowboy', emoji: '🤠', bg: 'linear-gradient(135deg,#fef3c7,#c2410c)' },
-  { seed: 'wizard', label: 'Wizard', emoji: '🧙', bg: 'linear-gradient(135deg,#ede9fe,#6d28d9)' },
+  { seed: 'wizard', label: 'Wizard', emoji: '🧙', bg: 'linear-gradient(135deg,#ede9fe,#0891b2)' },
   { seed: 'ninja', label: 'Ninja', emoji: '🥷', bg: 'linear-gradient(135deg,#d1d5db,#111827)' },
   { seed: 'astronaut', label: 'Astronaut', emoji: '🧑‍🚀', bg: 'linear-gradient(135deg,#cffafe,#2563eb)' },
   { seed: 'robot', label: 'Robot', emoji: '🤖', bg: 'linear-gradient(135deg,#ccfbf1,#0f766e)' },

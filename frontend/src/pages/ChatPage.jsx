@@ -357,7 +357,7 @@ export default function ChatPage() {
                 onClick={() => setActiveId(c._id)}
                 className={cn(
                   'w-full text-left border-b px-3 py-3 hover:bg-accent transition-colors',
-                  unreadCount > 0 && activeId !== c._id && 'bg-indigo-50 border-l-4 border-l-indigo-500',
+                  unreadCount > 0 && activeId !== c._id && 'bg-teal-50 border-l-4 border-l-teal-500',
                   activeId === c._id && 'bg-accent'
                 )}
               >
@@ -371,7 +371,7 @@ export default function ChatPage() {
                   )}
                   <div className="min-w-0 flex-1">
                     <div className="flex items-start justify-between gap-2">
-                      <div className={cn('font-medium text-sm line-clamp-1', unreadCount > 0 && 'font-bold text-indigo-900')}>{titleFor(c, user)}</div>
+                      <div className={cn('font-medium text-sm line-clamp-1', unreadCount > 0 && 'font-bold text-teal-900')}>{titleFor(c, user)}</div>
                       <div className="flex shrink-0 items-center gap-1">
                         {unreadCount > 0 && (
                           <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1.5 text-[10px] font-bold text-white">
@@ -385,7 +385,7 @@ export default function ChatPage() {
                       {membersText(c, user)}
                     </div>
                     {c.kind === 'ticket' && c.ticket?.student?.name && (
-                      <div className="mt-1 text-xs font-medium text-indigo-700 line-clamp-1">
+                      <div className="mt-1 text-xs font-medium text-teal-700 line-clamp-1">
                         Student: {c.ticket.student.name}{c.ticket.student.enrollmentNumber ? ` - ${c.ticket.student.enrollmentNumber}` : ''}
                       </div>
                     )}
@@ -429,7 +429,7 @@ export default function ChatPage() {
                             <span className="rounded-full border bg-slate-50 px-2 py-0.5 text-slate-600">{active.ticket?.center?.name || 'Center'}</span>
                             <span className="rounded-full border bg-amber-50 px-2 py-0.5 text-amber-700">Priority: {active.ticket?.priority || 'Normal'}</span>
                             {active.ticket?.student?.name && (
-                              <span className="rounded-full border bg-indigo-50 px-2 py-0.5 text-indigo-700">
+                              <span className="rounded-full border bg-teal-50 px-2 py-0.5 text-teal-700">
                                 Student: {active.ticket.student.name}{active.ticket.student.enrollmentNumber ? ` - ${active.ticket.student.enrollmentNumber}` : ''}
                               </span>
                             )}

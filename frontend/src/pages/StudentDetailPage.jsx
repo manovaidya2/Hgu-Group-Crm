@@ -32,13 +32,13 @@ function PaidToBox({ tx, accMap=[] }) {
   const isUPI = acc?.mode === 'UPI';
   const isBank = acc?.mode === 'Bank Transfer';
   return (
-    <div className="mt-1.5 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-2 space-y-0.5">
+    <div className="mt-1.5 bg-teal-50 border border-teal-200 rounded-lg px-3 py-2 space-y-0.5">
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-xs font-bold text-indigo-500 uppercase tracking-wider">Paid To</span>
-        <span className="text-sm font-semibold text-indigo-800">{label}</span>
+        <span className="text-xs font-bold text-teal-500 uppercase tracking-wider">Paid To</span>
+        <span className="text-sm font-semibold text-teal-800">{label}</span>
         {acc?.mode && <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${isUPI?'bg-blue-100 text-blue-700':'bg-emerald-100 text-emerald-700'}`}>{acc.mode}</span>}
       </div>
-      {acc && (<div className="space-y-0.5 text-xs text-indigo-700">
+      {acc && (<div className="space-y-0.5 text-xs text-teal-700">
         {isUPI  && acc.upiId         && <div>UPI ID: <span className="font-mono font-bold">{acc.upiId}</span></div>}
         {isUPI  && acc.upiName        && <div>Name: <span className="font-semibold">{acc.upiName}</span></div>}
         {isBank && acc.bankName       && <div>Bank: <span className="font-semibold">{acc.bankName}</span></div>}
@@ -53,9 +53,9 @@ function PaidToBox({ tx, accMap=[] }) {
 
 const STATUS_COLORS = {
   Draft:'bg-gray-100 text-gray-700', Submitted:'bg-blue-100 text-blue-700',
-  Changes_Requested:'bg-amber-100 text-amber-700', Counselor_Approved:'bg-indigo-100 text-indigo-700',
+  Changes_Requested:'bg-amber-100 text-amber-700', Counselor_Approved:'bg-teal-100 text-teal-700',
   Rejected:'bg-red-100 text-red-700', Accountant_Pending:'bg-amber-100 text-amber-700',
-  Sent_To_University:'bg-purple-100 text-purple-700', Enrolled:'bg-emerald-100 text-emerald-700',
+  Sent_To_University:'bg-cyan-100 text-cyan-700', Enrolled:'bg-emerald-100 text-emerald-700',
   Cancelled:'bg-slate-100 text-slate-600',
 };
 
@@ -95,9 +95,9 @@ const ADMIN_DOC_STATUSES = [
 ];
 
 const DOC_STATUS_COLORS = {
-  Requested:'bg-blue-100 text-blue-700', Forwarded:'bg-indigo-100 text-indigo-700',
+  Requested:'bg-blue-100 text-blue-700', Forwarded:'bg-teal-100 text-teal-700',
   Fee_Approved:'bg-green-100 text-green-700', Fee_Rejected:'bg-red-100 text-red-700',
-  Sent_To_University:'bg-purple-100 text-purple-700', Center_Notified:'bg-amber-100 text-amber-700',
+  Sent_To_University:'bg-cyan-100 text-cyan-700', Center_Notified:'bg-amber-100 text-amber-700',
   Payment_Submitted:'bg-blue-100 text-blue-700', Payment_Verified:'bg-green-100 text-green-700',
   Dispatched:'bg-teal-100 text-teal-700', Delivered:'bg-emerald-100 text-emerald-700',
 };
@@ -150,7 +150,7 @@ function AdminTxEditDialog({ tx, studentId, payAccounts, onDone, onClose }) {
       <DialogContent className="max-w-md max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <Shield className="h-4 w-4 text-indigo-600"/>Admin — Edit Payment Transaction
+            <Shield className="h-4 w-4 text-teal-600"/>Admin — Edit Payment Transaction
           </DialogTitle>
         </DialogHeader>
         <div className="space-y-3">
@@ -240,7 +240,7 @@ function AdminTxEditDialog({ tx, studentId, payAccounts, onDone, onClose }) {
             {tx.paymentScreenshot && !screenshotFile && (
               <div className="mb-2">
                 <a href={`${MEDIA}${tx.paymentScreenshot}`} target="_blank" rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-100 transition-colors">
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5 hover:bg-teal-100 transition-colors">
                   <Download className="h-3 w-3"/>View Current Screenshot
                 </a>
               </div>
@@ -265,7 +265,7 @@ function AdminTxEditDialog({ tx, studentId, payAccounts, onDone, onClose }) {
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={onClose}>Cancel</Button>
-          <Button onClick={save} disabled={saving} className="bg-indigo-600 hover:bg-indigo-700">
+          <Button onClick={save} disabled={saving} className="bg-teal-600 hover:bg-teal-700">
             {saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Save Changes
           </Button>
         </DialogFooter>
@@ -726,7 +726,7 @@ export default function StudentDetailPage() {
                         {isAdmin && (
                           <div className="flex gap-1">
                             <button onClick={()=>setEditTx(tx)}
-                              className="p-1 text-slate-400 hover:text-indigo-600 rounded transition-colors" title="Edit transaction">
+                              className="p-1 text-slate-400 hover:text-teal-600 rounded transition-colors" title="Edit transaction">
                               <Edit2 className="h-3.5 w-3.5"/>
                             </button>
                             <button onClick={()=>delTx(tx._id)}
@@ -748,7 +748,7 @@ export default function StudentDetailPage() {
                       {tx.paymentScreenshot && (
                         <div className="mt-1.5">
                           <a href={`${MEDIA}${tx.paymentScreenshot}`} target="_blank" rel="noreferrer"
-                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-100 transition-colors">
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5 hover:bg-teal-100 transition-colors">
                             <Download className="h-3 w-3"/>View Payment Screenshot
                           </a>
                         </div>
@@ -869,7 +869,7 @@ export default function StudentDetailPage() {
                 {p.paymentScreenshot && (
                   <div className="mt-1.5">
                     <a href={`${MEDIA}${p.paymentScreenshot}`} target="_blank" rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-100 transition-colors">
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5 hover:bg-teal-100 transition-colors">
                       <Download className="h-3 w-3"/>View Payment Screenshot
                     </a>
                   </div>
@@ -938,7 +938,7 @@ export default function StudentDetailPage() {
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setTransferOpen(false)}>Cancel</Button>
-            <Button onClick={handleTransfer} disabled={saving || !transferCenterId || !transferTargetCenter?.assignedCounselor} className="bg-indigo-600 hover:bg-indigo-700">
+            <Button onClick={handleTransfer} disabled={saving || !transferCenterId || !transferTargetCenter?.assignedCounselor} className="bg-teal-600 hover:bg-teal-700">
               {saving && <Loader2 className="h-4 w-4 mr-1 animate-spin"/>}
               Transfer Student
             </Button>
@@ -951,7 +951,7 @@ export default function StudentDetailPage() {
         <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              {isAdmin && <Shield className="h-4 w-4 text-indigo-600"/>}
+              {isAdmin && <Shield className="h-4 w-4 text-teal-600"/>}
               Edit Student {isAdmin ? '(Admin — All fields editable)' : student.coreLocked ? '(Core fields locked)' : ''}
             </DialogTitle>
           </DialogHeader>
@@ -1008,8 +1008,8 @@ export default function StudentDetailPage() {
 
             {/* Admin-only section */}
             {isAdmin && (
-              <div className="border border-indigo-200 bg-indigo-50/50 rounded-xl p-4 space-y-3">
-                <p className="text-xs font-semibold text-indigo-600 uppercase tracking-wider flex items-center gap-1.5">
+              <div className="border border-teal-200 bg-teal-50/50 rounded-xl p-4 space-y-3">
+                <p className="text-xs font-semibold text-teal-600 uppercase tracking-wider flex items-center gap-1.5">
                   <Shield className="h-3.5 w-3.5"/>Admin Only Fields
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -1191,7 +1191,7 @@ export default function StudentDetailPage() {
                   const acc = payAccounts.find(a => a._id === tf.paidToAccount);
                   if (!acc) return null;
                   return (
-                    <div className="mt-1 bg-indigo-50 border border-indigo-200 rounded px-3 py-2 text-xs text-indigo-800 space-y-0.5">
+                    <div className="mt-1 bg-teal-50 border border-teal-200 rounded px-3 py-2 text-xs text-teal-800 space-y-0.5">
                       <div className="font-semibold">{acc.label}</div>
                       {acc.mode==='UPI' && acc.upiId && <div>UPI ID: <span className="font-mono font-bold">{acc.upiId}</span></div>}
                       {acc.mode==='Bank Transfer' && acc.bankName && <div>Bank: <span className="font-semibold">{acc.bankName}</span></div>}
@@ -1231,7 +1231,7 @@ export default function StudentDetailPage() {
                           name: '',
                           names: checked ? p.names.filter(x => x !== name) : [...p.names, name],
                         }))}
-                        className="h-4 w-4 accent-indigo-600"
+                        className="h-4 w-4 accent-teal-600"
                       />
                       <span>{name}</span>
                     </label>
@@ -1273,8 +1273,8 @@ export default function StudentDetailPage() {
             <div><Label>Charge (₹)</Label><Input type="number" value={editDocForm.chargeFee} onChange={e=>setEditDocForm(p=>({...p,chargeFee:e.target.value}))}/></div>
             <div><Label>Note</Label><Input value={editDocForm.note} onChange={e=>setEditDocForm(p=>({...p,note:e.target.value}))}/></div>
             {isAdmin && (
-              <div className="rounded-lg border border-indigo-200 bg-indigo-50/50 p-3 space-y-3">
-                <p className="text-xs font-semibold text-indigo-600 uppercase tracking-wider flex items-center gap-1.5">
+              <div className="rounded-lg border border-teal-200 bg-teal-50/50 p-3 space-y-3">
+                <p className="text-xs font-semibold text-teal-600 uppercase tracking-wider flex items-center gap-1.5">
                   <Shield className="h-3.5 w-3.5"/>Admin Approval
                 </p>
                 <div>

@@ -16,9 +16,9 @@ const STATUS_LABELS = {
 };
 const STATUS_COLORS = {
   Draft: 'bg-gray-100 text-gray-700', Submitted: 'bg-blue-100 text-blue-700',
-  Changes_Requested: 'bg-amber-100 text-amber-700', Counselor_Approved: 'bg-indigo-100 text-indigo-700',
+  Changes_Requested: 'bg-amber-100 text-amber-700', Counselor_Approved: 'bg-teal-100 text-teal-700',
   Rejected: 'bg-red-100 text-red-700', Accountant_Pending: 'bg-amber-100 text-amber-700',
-  Sent_To_University: 'bg-purple-100 text-purple-700', Enrolled: 'bg-emerald-100 text-emerald-700',
+  Sent_To_University: 'bg-cyan-100 text-cyan-700', Enrolled: 'bg-emerald-100 text-emerald-700',
   Cancelled: 'bg-slate-100 text-slate-600',
 };
 
@@ -257,7 +257,7 @@ function MonthlyChart({ data }) {
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <CardTitle className="text-base flex items-center gap-2">
-            <BarChart3 className="h-4 w-4 text-indigo-600"/>Monthly Fee Collections
+            <BarChart3 className="h-4 w-4 text-teal-600"/>Monthly Fee Collections
           </CardTitle>
           <div className="flex items-center gap-3 flex-wrap">
             <div className="text-right">
@@ -283,7 +283,7 @@ function MonthlyChart({ data }) {
                   {fmt(d.amount)}
                 </div>
                 <div
-                  className={`w-full rounded-t-sm transition-all ${isLast ? 'bg-indigo-500' : d.amount > 0 ? 'bg-indigo-300' : 'bg-slate-100'}`}
+                  className={`w-full rounded-t-sm transition-all ${isLast ? 'bg-teal-500' : d.amount > 0 ? 'bg-teal-300' : 'bg-slate-100'}`}
                   style={{ height: `${h}%` }}
                 />
                 <span className="text-[9px] text-muted-foreground rotate-45 origin-left whitespace-nowrap mt-1">
@@ -348,7 +348,7 @@ function CenterFeesTable({ centers }) {
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Search center…"
-            className="text-xs border border-slate-200 rounded-lg px-3 py-1.5 w-40 focus:outline-none focus:border-indigo-400"
+            className="text-xs border border-slate-200 rounded-lg px-3 py-1.5 w-40 focus:outline-none focus:border-teal-400"
           />
         </div>
         <div className="flex gap-3 flex-wrap mt-2">
@@ -496,7 +496,7 @@ function BankWiseSection({ data, allPayments }) {
       <Card>
         <CardHeader className="pb-2">
           <CardTitle className="text-base flex items-center gap-2">
-            <IndianRupee className="h-4 w-4 text-indigo-600"/>Payment Accounts — Collection Summary
+            <IndianRupee className="h-4 w-4 text-teal-600"/>Payment Accounts — Collection Summary
           </CardTitle>
           <p className="text-xs text-muted-foreground mt-0.5">Click on any account to view its transaction history</p>
         </CardHeader>
@@ -528,7 +528,7 @@ function BankWiseSection({ data, allPayments }) {
                     <div className={`font-bold text-sm ${acc.total > 0 ? 'text-emerald-700' : 'text-muted-foreground'}`}>{fmt(acc.total)}</div>
                     <div className="text-xs text-muted-foreground">{acc.count} txn{acc.count !== 1 ? 's' : ''}</div>
                   </div>
-                  <ChevronRight className="h-4 w-4 text-slate-300 group-hover:text-indigo-500 transition-colors"/>
+                  <ChevronRight className="h-4 w-4 text-slate-300 group-hover:text-teal-500 transition-colors"/>
                 </div>
               </div>
             );
@@ -570,27 +570,27 @@ function BankWiseSection({ data, allPayments }) {
                     <div className="text-xs text-slate-500 mb-1">From</div>
                     <input type="date" value={dateFrom} onChange={e => setDateFrom(e.target.value)}
                       onClick={e => e.stopPropagation()}
-                      className="text-xs border border-slate-200 rounded-lg px-2 py-1.5 h-8 focus:outline-none focus:border-indigo-400"/>
+                      className="text-xs border border-slate-200 rounded-lg px-2 py-1.5 h-8 focus:outline-none focus:border-teal-400"/>
                   </div>
                   <div>
                     <div className="text-xs text-slate-500 mb-1">To</div>
                     <input type="date" value={dateTo} onChange={e => setDateTo(e.target.value)}
                       onClick={e => e.stopPropagation()}
-                      className="text-xs border border-slate-200 rounded-lg px-2 py-1.5 h-8 focus:outline-none focus:border-indigo-400"/>
+                      className="text-xs border border-slate-200 rounded-lg px-2 py-1.5 h-8 focus:outline-none focus:border-teal-400"/>
                   </div>
                   {(dateFrom||dateTo) && (
                     <button onClick={e=>{e.stopPropagation();setDateFrom('');setDateTo('');}}
                       className="text-xs text-red-400 hover:text-red-600 h-8 px-1">✕ Clear</button>
                   )}
                   <button onClick={e=>{e.stopPropagation();downloadCSV(modal,txns);}}
-                    className="ml-auto flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-lg px-3 h-8 transition-colors">
+                    className="ml-auto flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-lg px-3 h-8 transition-colors">
                     ↓ Download CSV
                   </button>
                 </div>
                 <div className="mt-3 flex gap-2">
-                  <div className="bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5">
-                    <div className="text-xs text-indigo-500">Total Collected</div>
-                    <div className="font-bold text-indigo-700">{fmt(total)}</div>
+                  <div className="bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5">
+                    <div className="text-xs text-teal-500">Total Collected</div>
+                    <div className="font-bold text-teal-700">{fmt(total)}</div>
                   </div>
                   <div className="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5">
                     <div className="text-xs text-muted-foreground">Transactions</div>
@@ -705,7 +705,7 @@ export default function DashboardPage() {
       <div className="space-y-6">
         <h1 className="text-2xl font-bold">University Dashboard</h1>
         <div className="grid grid-cols-2 gap-4">
-          <StatCard icon={Clock} label="Pending Enrollment" value={stats?.pendingEnrollment || 0} color="text-purple-600" sub="Awaiting enrollment number" />
+          <StatCard icon={Clock} label="Pending Enrollment" value={stats?.pendingEnrollment || 0} color="text-cyan-600" sub="Awaiting enrollment number" />
           <StatCard icon={CheckCircle2} label="Enrolled Students" value={stats?.enrolled || 0} color="text-emerald-600" sub="Successfully enrolled" />
         </div>
       </div>

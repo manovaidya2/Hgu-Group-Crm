@@ -151,7 +151,7 @@ function PaymentFields({ form, setForm, showAmount = true, showDate = true, show
       {showAmount && (
         <div>
           <Label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">Amount (₹) *</Label>
-          <Input type="number" value={form.amount||''} onChange={e=>set('amount',e.target.value)} placeholder="0" className="mt-1 h-10 border-slate-200 focus:border-indigo-400 focus:ring-indigo-100"/>
+          <Input type="number" value={form.amount||''} onChange={e=>set('amount',e.target.value)} placeholder="0" className="mt-1 h-10 border-slate-200 focus:border-teal-400 focus:ring-teal-100"/>
         </div>
       )}
       <div className={showDate ? 'grid grid-cols-2 gap-3' : ''}>
@@ -226,7 +226,7 @@ function PaymentFields({ form, setForm, showAmount = true, showDate = true, show
         <div>
           <Label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">Paid To Account *</Label>
           <Select value={form.paidToAccount||''} onValueChange={selectAccount}>
-            <SelectTrigger className="mt-1 h-10 border-slate-200 focus:border-indigo-400">
+            <SelectTrigger className="mt-1 h-10 border-slate-200 focus:border-teal-400">
               <SelectValue placeholder="Select account payment was made to…"/>
             </SelectTrigger>
             <SelectContent>
@@ -246,7 +246,7 @@ function PaymentFields({ form, setForm, showAmount = true, showDate = true, show
             const acc = accounts.find(a => a._id === form.paidToAccount);
             if (!acc) return null;
             return (
-              <div className="mt-1.5 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-2 text-xs text-indigo-800 space-y-0.5">
+              <div className="mt-1.5 bg-teal-50 border border-teal-200 rounded-lg px-3 py-2 text-xs text-teal-800 space-y-0.5">
                 <div className="font-semibold">{acc.label}</div>
                 {acc.mode === 'UPI' && acc.upiId && <div>UPI ID: <span className="font-mono font-bold">{acc.upiId}</span></div>}
                 {acc.mode === 'UPI' && acc.upiName && <div>Name: {acc.upiName}</div>}
@@ -267,7 +267,7 @@ function PaymentFields({ form, setForm, showAmount = true, showDate = true, show
   </Label>
   {form.paymentScreenshot && typeof form.paymentScreenshot === 'string' && (
     <a href={`${MEDIA}${form.paymentScreenshot}`} target="_blank" rel="noreferrer"
-      className="text-xs text-indigo-600 underline mt-1 mb-1 flex items-center gap-1">
+      className="text-xs text-teal-600 underline mt-1 mb-1 flex items-center gap-1">
       <Download className="h-3 w-3"/>View current screenshot
     </a>
   )}
@@ -275,7 +275,7 @@ function PaymentFields({ form, setForm, showAmount = true, showDate = true, show
     type="file"
     accept="image/*,.pdf"
     onChange={e => set('paymentScreenshot', e.target.files[0])}
-    className="mt-1 block w-full text-sm file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-sm file:bg-indigo-50 file:text-indigo-600 file:font-medium"
+    className="mt-1 block w-full text-sm file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-sm file:bg-teal-50 file:text-teal-600 file:font-medium"
   />
   {form.paymentScreenshot && form.paymentScreenshot instanceof File && (
     <p className="text-xs text-emerald-600 mt-1 flex items-center gap-1">✓ {form.paymentScreenshot.name}</p>
@@ -334,7 +334,7 @@ function PaymentDetail({ tx, accMap }) {
       href={`${MEDIA}${tx.paymentScreenshot}`}
       target="_blank"
       rel="noreferrer"
-      className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-100 transition-colors"
+      className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5 hover:bg-teal-100 transition-colors"
     >
       <Download className="h-3 w-3"/>View Payment Screenshot
     </a>
@@ -342,14 +342,14 @@ function PaymentDetail({ tx, accMap }) {
 )}
       {/* Paid To Account box */}
       {(acc || tx.paidToAccountLabel) && (
-        <div className="mt-1.5 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-2 space-y-0.5">
+        <div className="mt-1.5 bg-teal-50 border border-teal-200 rounded-lg px-3 py-2 space-y-0.5">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-bold text-indigo-500 uppercase tracking-wider">Paid To</span>
-            <span className="text-xs font-semibold text-indigo-800">{acc?.label || tx.paidToAccountLabel}</span>
+            <span className="text-xs font-bold text-teal-500 uppercase tracking-wider">Paid To</span>
+            <span className="text-xs font-semibold text-teal-800">{acc?.label || tx.paidToAccountLabel}</span>
             {acc?.mode && <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${accIsUPI ? 'bg-blue-100 text-blue-700' : 'bg-emerald-100 text-emerald-700'}`}>{acc.mode}</span>}
           </div>
           {acc && (
-            <div className="space-y-0.5 text-xs text-indigo-700">
+            <div className="space-y-0.5 text-xs text-teal-700">
               {accIsUPI  && acc.upiId         && <div>UPI ID: <span className="font-mono font-bold">{acc.upiId}</span></div>}
               {accIsUPI  && acc.upiName        && <div>Name: <span className="font-semibold">{acc.upiName}</span></div>}
               {accIsBank && acc.bankName       && <div>Bank: <span className="font-semibold">{acc.bankName}</span></div>}
@@ -385,13 +385,13 @@ const FEE_EDITABLE_STATUSES = ['Draft', 'Changes_Requested', 'Accountant_Rejecte
 const DOC_STATUS = {
   Requested:{label:'Requested',color:'bg-blue-50 text-blue-700 border border-blue-200'},
   Changes_Requested:{label:'Changes Needed',color:'bg-amber-50 text-amber-700 border border-amber-300'},
-  Forwarded:{label:'Forwarded',color:'bg-indigo-50 text-indigo-700 border border-indigo-200'},
+  Forwarded:{label:'Forwarded',color:'bg-teal-50 text-teal-700 border border-teal-200'},
   Fee_Approved:{label:'Fee Approved',color:'bg-green-50 text-green-700 border border-green-200'},
   Fee_Rejected:{label:'Fee Rejected',color:'bg-red-50 text-red-600 border border-red-200'},
-  Sent_To_University:{label:'At University',color:'bg-purple-50 text-purple-700 border border-purple-200'},
-  University_Dispatched:{label:'Uni Dispatched',color:'bg-violet-50 text-violet-700 border border-violet-200'},
+  Sent_To_University:{label:'At University',color:'bg-cyan-50 text-cyan-700 border border-cyan-200'},
+  University_Dispatched:{label:'Uni Dispatched',color:'bg-sky-50 text-sky-700 border border-sky-200'},
   Dispatch_Received:{label:'Dispatch Received',color:'bg-teal-50 text-teal-700 border border-teal-200'},
-  Counselor_Received:{label:'With Counselor',color:'bg-indigo-50 text-indigo-700 border border-indigo-200'},
+  Counselor_Received:{label:'With Counselor',color:'bg-teal-50 text-teal-700 border border-teal-200'},
   Center_Notified:{label:'⚡ Pay Required',color:'bg-amber-50 text-amber-700 border border-amber-300'},
   Payment_Submitted:{label:'Payment Sent',color:'bg-blue-50 text-blue-700 border border-blue-200'},
   Payment_Verified:{label:'Payment Verified',color:'bg-green-50 text-green-700 border border-green-200'},
@@ -456,11 +456,11 @@ function CancelledBanner({ student, onSettlementRequested }) {
           </div>
         );
         if (isForwarded) return (
-          <div className="flex items-center gap-2 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-2.5">
+          <div className="flex items-center gap-2 bg-teal-50 border border-teal-200 rounded-lg px-3 py-2.5">
             <span className="text-base">📋</span>
             <div>
-              <p className="text-sm font-semibold text-indigo-700">In Process</p>
-              <p className="text-xs text-indigo-600">Refund/adjustment is being processed</p>
+              <p className="text-sm font-semibold text-teal-700">In Process</p>
+              <p className="text-xs text-teal-600">Refund/adjustment is being processed</p>
             </div>
           </div>
         );
@@ -566,10 +566,10 @@ function StepIndicator({ step }) {
     <div className="flex items-center justify-center gap-0 mb-6">
       {steps.map((s, i) => (
         <div key={s.n} className="flex items-center">
-          <div className={`flex flex-col items-center gap-1.5 ${step >= s.n ? 'text-indigo-600' : 'text-slate-400'}`}>
+          <div className={`flex flex-col items-center gap-1.5 ${step >= s.n ? 'text-teal-600' : 'text-slate-400'}`}>
             <div className={`h-9 w-9 rounded-full flex items-center justify-center text-sm font-bold border-2 transition-all shadow-sm ${
               step > s.n  ? 'bg-emerald-500 border-emerald-500 text-white shadow-emerald-200' :
-              step === s.n ? 'bg-indigo-600 border-indigo-600 text-white shadow-indigo-200' :
+              step === s.n ? 'bg-teal-600 border-teal-600 text-white shadow-teal-200' :
                              'bg-white border-slate-200 text-slate-400'
             }`}>
               {step > s.n ? '✓' : s.n}
@@ -892,7 +892,7 @@ function AddStudentWizard({ onClose, onSaved, defCounselor, centerId, actingAsCe
           <div className="rounded-xl border border-slate-200 overflow-hidden">
             <div className="bg-slate-50 px-4 py-2.5 flex items-center justify-between border-b border-slate-200">
               <span className="font-semibold text-sm text-slate-700 flex items-center gap-2"><User className="h-4 w-4 text-slate-400"/>Student Details</span>
-              <button onClick={() => setStep(1)} className="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1">
+              <button onClick={() => setStep(1)} className="text-xs text-teal-600 hover:text-teal-800 font-medium flex items-center gap-1">
                 <Pencil className="h-3 w-3"/>Edit
               </button>
             </div>
@@ -917,7 +917,7 @@ function AddStudentWizard({ onClose, onSaved, defCounselor, centerId, actingAsCe
           <div className="rounded-xl border border-slate-200 overflow-hidden">
             <div className="bg-slate-50 px-4 py-2.5 flex items-center justify-between border-b border-slate-200">
               <span className="font-semibold text-sm text-slate-700 flex items-center gap-2"><IndianRupee className="h-4 w-4 text-slate-400"/>Fee Details</span>
-              <button onClick={() => setStep(2)} className="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1">
+              <button onClick={() => setStep(2)} className="text-xs text-teal-600 hover:text-teal-800 font-medium flex items-center gap-1">
                 <Pencil className="h-3 w-3"/>Edit
               </button>
             </div>
@@ -935,7 +935,7 @@ function AddStudentWizard({ onClose, onSaved, defCounselor, centerId, actingAsCe
           <div className="rounded-xl border border-slate-200 overflow-hidden">
             <div className="bg-slate-50 px-4 py-2.5 flex items-center justify-between border-b border-slate-200">
               <span className="font-semibold text-sm text-slate-700 flex items-center gap-2"><FileText className="h-4 w-4 text-slate-400"/>Documents</span>
-              <button onClick={() => setStep(1)} className="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1">
+              <button onClick={() => setStep(1)} className="text-xs text-teal-600 hover:text-teal-800 font-medium flex items-center gap-1">
                 <Pencil className="h-3 w-3"/>Edit
               </button>
             </div>
@@ -968,7 +968,7 @@ function AddStudentWizard({ onClose, onSaved, defCounselor, centerId, actingAsCe
                 if (!form.courseName.trim()) return toast.error('Course name required');
               }
               setStep(p=>p+1);
-            }} className="bg-indigo-600 hover:bg-indigo-700 text-white">
+            }} className="bg-teal-600 hover:bg-teal-700 text-white">
               Next →
             </Button>
           )}
@@ -1127,7 +1127,7 @@ function FeeSection({ studentId, appStatus, student }) {
             {[
               ['Total Fee',   fmt(data.totalFee),   'text-slate-700',   'bg-slate-50 border-slate-200'],
               ['Discount',    fmt(data.discount),    'text-amber-600',   'bg-amber-50 border-amber-200'],
-              ['Net Fee',     fmt(data.netFee),      'text-indigo-600',  'bg-indigo-50 border-indigo-200'],
+              ['Net Fee',     fmt(data.netFee),      'text-teal-600',  'bg-teal-50 border-teal-200'],
               ['Paid',        fmt(data.paidAmount),  'text-emerald-600', 'bg-emerald-50 border-emerald-200'],
             ].map(([l,v,vc,bg])=>(
               <div key={l} className={`rounded-xl border p-3 text-center ${bg}`}>
@@ -1146,7 +1146,7 @@ function FeeSection({ studentId, appStatus, student }) {
             <div className="flex items-center gap-2 flex-wrap justify-center">
   {canSetFee && <Button size="sm" variant="outline" onClick={()=>{setFf({totalFee:data.totalFee,discount:data.discount,notes:data.notes||''});setFfInstallments((data.installments||[]).length ? data.installments.map(i=>({installmentNumber:i.installmentNumber,paymentDate:i.paymentDate?String(i.paymentDate).split('T')[0]:'',amount:i.amount||'',reasonOrRequirement:i.reasonOrRequirement||''})) : [blankInstallment(1)]);setFeeOpen(true);}} className="border-slate-200 text-slate-600">Edit Fee</Button>}
   {canAddPayment && (
-    <Button size="sm" onClick={()=>setTxOpen(true)} className="bg-indigo-600 hover:bg-indigo-700">
+    <Button size="sm" onClick={()=>setTxOpen(true)} className="bg-teal-600 hover:bg-teal-700">
       <PlusCircle className="h-3.5 w-3.5 mr-1.5"/>Add Payment
     </Button>
   )}
@@ -1240,7 +1240,7 @@ function FeeSection({ studentId, appStatus, student }) {
           </div>
           <p className="text-sm font-medium text-slate-600 mb-1">No fee structure set up</p>
           <p className="text-xs text-slate-400 mb-4">Set up fees to track payments</p>
-          {canSetFee ? <Button onClick={()=>{setFf({totalFee:'',discount:'',notes:''});setFfInstallments([blankInstallment(1)]);setFeeOpen(true);}} className="bg-indigo-600 hover:bg-indigo-700">Set Up Fees</Button>
+          {canSetFee ? <Button onClick={()=>{setFf({totalFee:'',discount:'',notes:''});setFfInstallments([blankInstallment(1)]);setFeeOpen(true);}} className="bg-teal-600 hover:bg-teal-700">Set Up Fees</Button>
             : isCancelled
               ? <p className="text-xs text-slate-400">Application cancelled — fees cannot be modified.</p>
               : <p className="text-xs text-slate-400">Fee will be set during application submission.</p>}
@@ -1270,7 +1270,7 @@ function FeeSection({ studentId, appStatus, student }) {
                     <span className="text-slate-300" title={isCancelled ? 'Application cancelled' : 'Verified — cannot edit'}>🔒</span>
                   ) : (
                     <>
-                      <button onClick={()=>setEditTx({...tx,paidAt:tx.paidAt?new Date(tx.paidAt).toISOString().split('T')[0]:''})} className="text-slate-300 hover:text-indigo-500 transition-colors p-1" title="Edit"><Pencil className="h-3.5 w-3.5"/></button>
+                      <button onClick={()=>setEditTx({...tx,paidAt:tx.paidAt?new Date(tx.paidAt).toISOString().split('T')[0]:''})} className="text-slate-300 hover:text-teal-500 transition-colors p-1" title="Edit"><Pencil className="h-3.5 w-3.5"/></button>
                       <button onClick={()=>delTx(tx._id)} className="text-slate-300 hover:text-red-500 transition-colors p-1" title="Delete"><Trash2 className="h-3.5 w-3.5"/></button>
                     </>
                   )}
@@ -1293,7 +1293,7 @@ function FeeSection({ studentId, appStatus, student }) {
             <div><Label className="text-xs font-semibold text-slate-600">Notes</Label><Textarea rows={2} value={ff.notes} onChange={e=>setFf(p=>({...p,notes:e.target.value}))} className="mt-1 border-slate-200 resize-none"/></div>
             <InstallmentTimelineEditor rows={ffInstallments} setRows={setFfInstallments} compact expectedAmount={Number(ff.totalFee || 0) - Number(ff.discount || 0)} />
           </div>
-          <DialogFooter className="border-t border-slate-100 px-6 py-4"><Button variant="outline" onClick={()=>setFeeOpen(false)} className="border-slate-200">Cancel</Button><Button onClick={saveFee} disabled={saving} className="bg-indigo-600 hover:bg-indigo-700">{saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Save</Button></DialogFooter>
+          <DialogFooter className="border-t border-slate-100 px-6 py-4"><Button variant="outline" onClick={()=>setFeeOpen(false)} className="border-slate-200">Cancel</Button><Button onClick={saveFee} disabled={saving} className="bg-teal-600 hover:bg-teal-700">{saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Save</Button></DialogFooter>
         </DialogContent>
       </Dialog>
 
@@ -1301,24 +1301,24 @@ function FeeSection({ studentId, appStatus, student }) {
   <DialogContent className="max-w-lg flex flex-col max-h-[90vh]">
     <DialogHeader><DialogTitle className="text-slate-800">Record Payment</DialogTitle></DialogHeader>
     {/* Pay Online banner */}
-    <div className="flex items-center gap-3 bg-indigo-50 border border-indigo-200 rounded-xl px-4 py-3">
+    <div className="flex items-center gap-3 bg-teal-50 border border-teal-200 rounded-xl px-4 py-3">
       
         <a href="https://eduglobe.ae/payment"
         target="_blank"
         rel="noreferrer"
-        className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition-colors whitespace-nowrap"
+        className="flex items-center gap-2 px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-lg transition-colors whitespace-nowrap"
       >
         <CreditCard className="h-3.5 w-3.5" />
         Pay Online
       </a>
-      <p className="text-xs text-indigo-700 font-medium leading-snug">
+      <p className="text-xs text-teal-700 font-medium leading-snug">
         Click this button to pay the amount, then fill in the payment details and upload the screenshot below.
       </p>
     </div>
     <div className="overflow-y-auto flex-1 pr-3 pl-2">
       <PaymentFields form={tf} setForm={setTf} showAmount={true} showDate={true}/>
     </div>
-          <DialogFooter><Button variant="outline" onClick={()=>setTxOpen(false)} className="border-slate-200">Cancel</Button><Button onClick={addTx} disabled={saving} className="bg-indigo-600 hover:bg-indigo-700">{saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Record</Button></DialogFooter>
+          <DialogFooter><Button variant="outline" onClick={()=>setTxOpen(false)} className="border-slate-200">Cancel</Button><Button onClick={addTx} disabled={saving} className="bg-teal-600 hover:bg-teal-700">{saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Record</Button></DialogFooter>
         </DialogContent>
       </Dialog>
 
@@ -1334,7 +1334,7 @@ function FeeSection({ studentId, appStatus, student }) {
               {saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Save Only
             </Button>
             {editTx?.verificationStatus !== 'verified' && (
-              <Button onClick={resendTx} disabled={saving} className="bg-indigo-600 hover:bg-indigo-700">
+              <Button onClick={resendTx} disabled={saving} className="bg-teal-600 hover:bg-teal-700">
                 {saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}
                 <Send className="h-3.5 w-3.5 mr-1.5"/>Save &amp; Send to Counselor
               </Button>
@@ -1529,7 +1529,7 @@ function DocsSection({ studentId, isEnrolled, isCancelled }) {
       <div className="flex items-center justify-between">
         <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{docs.length} document{docs.length!==1?'s':''}</p>
         {isEnrolled && !isCancelled &&(
-          <Button size="sm" onClick={()=>setAddOpen(true)} className="bg-indigo-600 hover:bg-indigo-700 h-8 text-xs">
+          <Button size="sm" onClick={()=>setAddOpen(true)} className="bg-teal-600 hover:bg-teal-700 h-8 text-xs">
             <Plus className="h-3.5 w-3.5 mr-1.5"/>Request Document
           </Button>
         )}
@@ -1597,7 +1597,7 @@ function DocsSection({ studentId, isEnrolled, isCancelled }) {
                 );
               })()}
               <div className="flex flex-wrap gap-2 mb-1">
-                {d.fileUrl&&<a href={`${MEDIA}${d.fileUrl}`} target="_blank" rel="noreferrer" className="text-xs text-indigo-600 hover:text-indigo-800 flex items-center gap-1 font-medium"><Download className="h-3 w-3"/>View file</a>}
+                {d.fileUrl&&<a href={`${MEDIA}${d.fileUrl}`} target="_blank" rel="noreferrer" className="text-xs text-teal-600 hover:text-teal-800 flex items-center gap-1 font-medium"><Download className="h-3 w-3"/>View file</a>}
                 {d.scannedUrl && ['Center_Notified','Payment_Submitted','Payment_Verified','Dispatched','Delivered'].includes(d.status) && (
   <a href={`${MEDIA}${d.scannedUrl}`} target="_blank" rel="noreferrer" className="text-xs text-teal-600 hover:text-teal-800 flex items-center gap-1 font-medium">
     <Download className="h-3 w-3"/>Scanned copy
@@ -1676,7 +1676,7 @@ function DocsSection({ studentId, isEnrolled, isCancelled }) {
             },
           })
         }
-        className="text-slate-300 hover:text-indigo-500 transition-colors p-1"
+        className="text-slate-300 hover:text-teal-500 transition-colors p-1"
       >
         <Pencil className="h-3.5 w-3.5" />
       </button>
@@ -1742,7 +1742,7 @@ function DocsSection({ studentId, isEnrolled, isCancelled }) {
                             chargeFees: nextCharges,
                           };
                         })}
-                        className="h-4 w-4 accent-indigo-600"
+                        className="h-4 w-4 accent-teal-600"
                       />
                       <span>{name}</span>
                     </label>
@@ -1798,7 +1798,7 @@ function DocsSection({ studentId, isEnrolled, isCancelled }) {
               </div>
             </div> */}
           </div>
-          <DialogFooter><Button variant="outline" onClick={()=>setAddOpen(false)} className="border-slate-200">Cancel</Button><Button onClick={addDoc} disabled={saving} className="bg-indigo-600 hover:bg-indigo-700">{saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Submit Request</Button></DialogFooter>
+          <DialogFooter><Button variant="outline" onClick={()=>setAddOpen(false)} className="border-slate-200">Cancel</Button><Button onClick={addDoc} disabled={saving} className="bg-teal-600 hover:bg-teal-700">{saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Submit Request</Button></DialogFooter>
         </DialogContent>
       </Dialog>
 
@@ -1835,7 +1835,7 @@ function DocsSection({ studentId, isEnrolled, isCancelled }) {
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={()=>setEditDoc(null)} className="border-slate-200">Cancel</Button>
-            <Button onClick={saveDocEdit} disabled={saving} className="bg-indigo-600 hover:bg-indigo-700">{saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Save Changes</Button>
+            <Button onClick={saveDocEdit} disabled={saving} className="bg-teal-600 hover:bg-teal-700">{saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Save Changes</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -1853,7 +1853,7 @@ function DocsSection({ studentId, isEnrolled, isCancelled }) {
           type="file"
           accept="image/*,.pdf"
           onChange={e => setPf(p => ({ ...p, paymentScreenshot: e.target.files[0] || null }))}
-          className="block w-full text-sm mt-1 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-sm file:bg-indigo-50 file:text-indigo-600 file:font-medium hover:file:bg-indigo-100 cursor-pointer"
+          className="block w-full text-sm mt-1 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-sm file:bg-teal-50 file:text-teal-600 file:font-medium hover:file:bg-teal-100 cursor-pointer"
         />
         {pf.paymentScreenshot && (
           <p className="text-xs text-emerald-600 mt-1 flex items-center gap-1">
@@ -1862,7 +1862,7 @@ function DocsSection({ studentId, isEnrolled, isCancelled }) {
         )}
       </div>
     </div>
-          <DialogFooter><Button variant="outline" onClick={()=>setPayDoc(null)} className="border-slate-200">Cancel</Button><Button onClick={addDocPay} disabled={saving} className="bg-indigo-600 hover:bg-indigo-700">{saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Submit Payment</Button></DialogFooter>
+          <DialogFooter><Button variant="outline" onClick={()=>setPayDoc(null)} className="border-slate-200">Cancel</Button><Button onClick={addDocPay} disabled={saving} className="bg-teal-600 hover:bg-teal-700">{saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Submit Payment</Button></DialogFooter>
         </DialogContent>
       </Dialog>
 
@@ -1905,7 +1905,7 @@ function DocsSection({ studentId, isEnrolled, isCancelled }) {
       <Button
         onClick={updateDocPay}
         disabled={saving}
-        className="bg-indigo-600 hover:bg-indigo-700"
+        className="bg-teal-600 hover:bg-teal-700"
       >
         {saving && (
           <Loader2 className="h-4 w-4 mr-1 animate-spin" />
@@ -1957,7 +1957,7 @@ function PaymentsSection({ studentId }) {
           <div className="flex items-center justify-between gap-2 mb-1.5">
             <div className="flex items-center gap-2.5 flex-wrap">
               <span className="font-bold text-emerald-600 text-base">{fmt(p.amount)}</span>
-              <span className="text-xs bg-indigo-50 text-indigo-600 border border-indigo-200 px-2 py-0.5 rounded-full font-medium">{p.source}</span>
+              <span className="text-xs bg-teal-50 text-teal-600 border border-teal-200 px-2 py-0.5 rounded-full font-medium">{p.source}</span>
             </div>
             <span className="text-xs text-slate-400 whitespace-nowrap bg-slate-50 border border-slate-200 px-2 py-1 rounded-lg">{fmtDt(p.paidAt||p.createdAt)}</span>
           </div>
@@ -2145,7 +2145,7 @@ function StudentDetail({ student, onBack, onRefresh, onStudentUpdated }) {
         </div>
         <div className="flex gap-2">
           {canEdit&&<Button variant="outline" size="sm" onClick={()=>startEdit('details')} className="border-slate-200 text-slate-600 h-8 text-xs"><Edit2 className="h-3.5 w-3.5 mr-1.5"/>Edit</Button>}
-          {canSubmit&&<Button size="sm" onClick={()=>setSubmitOpen(true)} className="bg-indigo-600 hover:bg-indigo-700 h-8 text-xs"><Send className="h-3.5 w-3.5 mr-1.5"/>Submit</Button>}
+          {canSubmit&&<Button size="sm" onClick={()=>setSubmitOpen(true)} className="bg-teal-600 hover:bg-teal-700 h-8 text-xs"><Send className="h-3.5 w-3.5 mr-1.5"/>Submit</Button>}
           {s.applicationStatus === 'Enrolled' && s.enrollmentNumber && !s.enrollmentNumberChecked && (
             <Button size="sm" onClick={checkEnrollmentNumber} disabled={saving} className="bg-emerald-600 hover:bg-emerald-700 h-8 text-xs">
               {saving ? <Loader2 className="h-3.5 w-3.5 mr-1.5 animate-spin"/> : <CheckCircle2 className="h-3.5 w-3.5 mr-1.5"/>}
@@ -2196,7 +2196,7 @@ function StudentDetail({ student, onBack, onRefresh, onStudentUpdated }) {
           <p className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
             <User className="h-3.5 w-3.5"/>Personal Information
           </p>
-          {canEdit&&<button onClick={()=>startEdit('details')} className="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1"><Edit2 className="h-3 w-3"/>Edit</button>}
+          {canEdit&&<button onClick={()=>startEdit('details')} className="text-xs text-teal-600 hover:text-teal-800 font-medium flex items-center gap-1"><Edit2 className="h-3 w-3"/>Edit</button>}
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 divide-x divide-y border-t border-slate-100">
           {[
@@ -2264,14 +2264,14 @@ function StudentDetail({ student, onBack, onRefresh, onStudentUpdated }) {
             <p className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
               <Paperclip className="h-3.5 w-3.5"/>Submitted Documents ({s.submissionDocs.length})
             </p>
-            {canEdit&&<button onClick={()=>startEdit('docs')} className="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1"><Edit2 className="h-3 w-3"/>Edit</button>}
+            {canEdit&&<button onClick={()=>startEdit('docs')} className="text-xs text-teal-600 hover:text-teal-800 font-medium flex items-center gap-1"><Edit2 className="h-3 w-3"/>Edit</button>}
           </div>
           <div className="p-4 flex flex-wrap gap-2">
             {s.submissionDocs.map((d,i)=>(
               <span key={i} className="text-xs flex items-center gap-1.5 bg-slate-50 border border-slate-200 rounded-full px-3 py-1.5 font-medium text-slate-700">
                 <Paperclip className="h-3 w-3 text-slate-400"/>
                 {d.fileUrl
-                  ?<a href={`${MEDIA}${d.fileUrl}`} target="_blank" rel="noreferrer" className="text-indigo-600 underline flex items-center gap-1"><Download className="h-3 w-3"/>{d.name}</a>
+                  ?<a href={`${MEDIA}${d.fileUrl}`} target="_blank" rel="noreferrer" className="text-teal-600 underline flex items-center gap-1"><Download className="h-3 w-3"/>{d.name}</a>
                   :<span>{d.name}</span>
                 }
               </span>
@@ -2331,7 +2331,7 @@ function StudentDetail({ student, onBack, onRefresh, onStudentUpdated }) {
             {[['details','Student Details',User],['fee','Fee',IndianRupee],['docs','Documents',FileText]].map(([key,label,Icon])=>(
               <button key={key} type="button" onClick={()=>setEditTab(key)}
                 className={`flex-1 flex items-center justify-center gap-1.5 text-sm py-2 rounded-lg font-semibold transition-all ${
-                  editTab===key ? 'bg-white shadow text-indigo-600' : 'text-slate-500 hover:text-slate-700'
+                  editTab===key ? 'bg-white shadow text-teal-600' : 'text-slate-500 hover:text-slate-700'
                 }`}>
                 <Icon className="h-3.5 w-3.5"/>{label}
               </button>
@@ -2382,7 +2382,7 @@ function StudentDetail({ student, onBack, onRefresh, onStudentUpdated }) {
               </div>
               <DialogFooter>
                 <Button variant="outline" onClick={()=>setEditOpen(false)} className="border-slate-200">Cancel</Button>
-                <Button onClick={saveDetails} disabled={saving} className="bg-indigo-600 hover:bg-indigo-700">{saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Save Details</Button>
+                <Button onClick={saveDetails} disabled={saving} className="bg-teal-600 hover:bg-teal-700">{saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Save Details</Button>
               </DialogFooter>
             </div>
           )}
@@ -2405,7 +2405,7 @@ function StudentDetail({ student, onBack, onRefresh, onStudentUpdated }) {
                 <InstallmentTimelineEditor rows={feeInstallments} setRows={setFeeInstallments} compact expectedAmount={Number(feeForm.totalFee || 0) - Number(feeForm.discount || 0)} />
                 <DialogFooter>
                   <Button variant="outline" onClick={()=>setEditOpen(false)} className="border-slate-200">Cancel</Button>
-                  <Button onClick={saveFee} disabled={feeSaving} className="bg-indigo-600 hover:bg-indigo-700">{feeSaving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Save Fee</Button>
+                  <Button onClick={saveFee} disabled={feeSaving} className="bg-teal-600 hover:bg-teal-700">{feeSaving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Save Fee</Button>
                 </DialogFooter>
               </>):(
                 <div className="flex items-start gap-3 text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-xl p-4">
@@ -2424,7 +2424,7 @@ function StudentDetail({ student, onBack, onRefresh, onStudentUpdated }) {
                   <div className="min-w-0">
                     <p className="text-sm font-semibold text-slate-700">{SUBMISSION_DOC_NAME}</p>
                     <p className="text-xs text-slate-400">Accepted format: PDF only.</p>
-                    {editDocs[0]?.fileUrl&&<div className="text-xs mt-1"><a href={`${MEDIA}${editDocs[0].fileUrl}`} target="_blank" rel="noreferrer" className="text-indigo-600 underline flex items-center gap-1 w-fit"><Download className="h-3 w-3"/>View uploaded PDF</a></div>}
+                    {editDocs[0]?.fileUrl&&<div className="text-xs mt-1"><a href={`${MEDIA}${editDocs[0].fileUrl}`} target="_blank" rel="noreferrer" className="text-teal-600 underline flex items-center gap-1 w-fit"><Download className="h-3 w-3"/>View uploaded PDF</a></div>}
                     {editDocs[0]?.file&&<p className="mt-1 truncate text-xs font-medium text-emerald-700">{editDocs[0].file.name}</p>}
                   </div>
                   <input
@@ -2447,7 +2447,7 @@ function StudentDetail({ student, onBack, onRefresh, onStudentUpdated }) {
               </div>
               <DialogFooter>
                 <Button variant="outline" onClick={()=>setEditOpen(false)} className="border-slate-200">Cancel</Button>
-                <Button onClick={saveDocs} disabled={docsSaving} className="bg-indigo-600 hover:bg-indigo-700">{docsSaving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Save Documents</Button>
+                <Button onClick={saveDocs} disabled={docsSaving} className="bg-teal-600 hover:bg-teal-700">{docsSaving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}Save Documents</Button>
               </DialogFooter>
             </div>
           )}
@@ -2457,7 +2457,7 @@ function StudentDetail({ student, onBack, onRefresh, onStudentUpdated }) {
       {/* Submit Dialog */}
       <Dialog open={submitOpen} onOpenChange={setSubmitOpen}>
         <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
-          <DialogHeader><DialogTitle className="flex items-center gap-2 text-slate-800"><Send className="h-4 w-4 text-indigo-600"/>Submit to Counselor</DialogTitle></DialogHeader>
+          <DialogHeader><DialogTitle className="flex items-center gap-2 text-slate-800"><Send className="h-4 w-4 text-teal-600"/>Submit to Counselor</DialogTitle></DialogHeader>
           <p className="text-sm text-slate-500">Review the details below before submitting for counselor review.</p>
 
           {!s.university && (
@@ -2503,7 +2503,7 @@ function StudentDetail({ student, onBack, onRefresh, onStudentUpdated }) {
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={()=>setSubmitOpen(false)} className="border-slate-200">Cancel</Button>
-            <Button onClick={submitApp} disabled={saving || !(s.university?._id || s.university || form.universityId)} className="bg-indigo-600 hover:bg-indigo-700">
+            <Button onClick={submitApp} disabled={saving || !(s.university?._id || s.university || form.universityId)} className="bg-teal-600 hover:bg-teal-700">
               {saving&&<Loader2 className="h-4 w-4 mr-1 animate-spin"/>}
               <Send className="h-4 w-4 mr-1.5"/>Confirm & Submit
             </Button>
@@ -2625,7 +2625,7 @@ export default function CenterPortalPage() {
   if(loading) return (
     <div className="flex h-64 items-center justify-center">
       <div className="text-center">
-        <Loader2 className="h-8 w-8 animate-spin text-indigo-400 mx-auto mb-2"/>
+        <Loader2 className="h-8 w-8 animate-spin text-teal-400 mx-auto mb-2"/>
         <p className="text-sm text-slate-400">Loading portal…</p>
       </div>
     </div>
@@ -2648,7 +2648,7 @@ export default function CenterPortalPage() {
       <div className="flex items-start justify-between">
         <div>
           {isCounselorSwitch && (
-            <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700">
+            <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700">
               {user?.role === 'PaymentCoordinator' ? 'Payment coordinator center view' : user?.role === 'ViewerCounselor' ? 'Viewer counselor center view' : 'Counselor center view'}
             </div>
           )}
@@ -2662,7 +2662,7 @@ export default function CenterPortalPage() {
         </div>
         <div className="flex items-center gap-2">
           {isCounselorSwitch ? (
-            <Button variant="outline" size="sm" onClick={returnToCounselor} className="border-indigo-200 text-indigo-700 hover:bg-indigo-50">
+            <Button variant="outline" size="sm" onClick={returnToCounselor} className="border-teal-200 text-teal-700 hover:bg-teal-50">
               <ArrowLeft className="h-4 w-4 mr-1.5"/>Switch Back
             </Button>
           ) : (
@@ -2670,7 +2670,7 @@ export default function CenterPortalPage() {
             <KeyRound className="h-4 w-4 mr-1.5"/>Change Password
           </Button>
           )}
-          <Button onClick={()=>setAddOpen(true)} className="bg-indigo-600 hover:bg-indigo-700 shadow-sm shadow-indigo-200">
+          <Button onClick={()=>setAddOpen(true)} className="bg-teal-600 hover:bg-teal-700 shadow-sm shadow-teal-200">
             <Plus className="h-4 w-4 mr-1.5"/>Add Student
           </Button>
         </div>
@@ -2701,7 +2701,7 @@ export default function CenterPortalPage() {
       {/* Search */}
       <div className="relative">
         <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400"/>
-        <Input className="pl-10 border-slate-200 bg-white h-10 text-sm placeholder:text-slate-400 focus:border-indigo-300 focus:ring-indigo-100"
+        <Input className="pl-10 border-slate-200 bg-white h-10 text-sm placeholder:text-slate-400 focus:border-teal-300 focus:ring-teal-100"
           placeholder="Search by name, phone or email…" value={search} onChange={e=>setSearch(e.target.value)}/>
       </div>
 
@@ -2718,7 +2718,7 @@ export default function CenterPortalPage() {
             {students.length===0 ? 'Click Add Student to get started' : `No match for "${search}"`}
           </p>
           {students.length===0 && (
-            <Button className="mt-4 bg-indigo-600 hover:bg-indigo-700" onClick={()=>setAddOpen(true)}>
+            <Button className="mt-4 bg-teal-600 hover:bg-teal-700" onClick={()=>setAddOpen(true)}>
               <Plus className="h-4 w-4 mr-1.5"/>Add First Student
             </Button>
           )}
@@ -2734,7 +2734,7 @@ export default function CenterPortalPage() {
                 className={`bg-white rounded-xl border cursor-pointer hover:shadow-md transition-all group ${
                   isChanges ? 'border-amber-300 hover:border-amber-400' :
                   isEnrolled ? 'border-emerald-200 hover:border-emerald-300' :
-                  'border-slate-200 hover:border-indigo-300'
+                  'border-slate-200 hover:border-teal-300'
                 }`}
                 onClick={()=>setSelected(s)}>
                 <div className="p-4 flex items-center justify-between gap-3">
@@ -2743,7 +2743,7 @@ export default function CenterPortalPage() {
                     <div className={`h-10 w-10 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0 ${
                       isEnrolled ? 'bg-emerald-100 text-emerald-700' :
                       isChanges ? 'bg-amber-100 text-amber-700' :
-                      'bg-indigo-100 text-indigo-700'
+                      'bg-teal-100 text-teal-700'
                     }`}>
                       {s.name?.charAt(0)?.toUpperCase() || '?'}
                     </div>
@@ -2813,8 +2813,8 @@ export default function CenterPortalPage() {
         <DialogContent className="max-w-2xl max-h-[92vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2.5 text-slate-800">
-              <div className="h-8 w-8 rounded-lg bg-indigo-100 flex items-center justify-center">
-                <GraduationCap className="h-4 w-4 text-indigo-600"/>
+              <div className="h-8 w-8 rounded-lg bg-teal-100 flex items-center justify-center">
+                <GraduationCap className="h-4 w-4 text-teal-600"/>
               </div>
               Add New Student
             </DialogTitle>
@@ -2834,8 +2834,8 @@ export default function CenterPortalPage() {
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2 text-slate-800">
-              <div className="h-8 w-8 rounded-lg bg-indigo-100 flex items-center justify-center">
-                <KeyRound className="h-4 w-4 text-indigo-600"/>
+              <div className="h-8 w-8 rounded-lg bg-teal-100 flex items-center justify-center">
+                <KeyRound className="h-4 w-4 text-teal-600"/>
               </div>
               Change Password
             </DialogTitle>
@@ -2845,7 +2845,7 @@ export default function CenterPortalPage() {
               <Label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">Current Password *</Label>
               <Input
                 type="password"
-                className="mt-1 h-10 border-slate-200 focus:border-indigo-400 focus:ring-indigo-100"
+                className="mt-1 h-10 border-slate-200 focus:border-teal-400 focus:ring-teal-100"
                 placeholder="Enter your current password"
                 value={pwdForm.current}
                 onChange={e=>setPwdForm(p=>({...p,current:e.target.value}))}
@@ -2855,7 +2855,7 @@ export default function CenterPortalPage() {
               <Label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">New Password *</Label>
               <Input
                 type="password"
-                className="mt-1 h-10 border-slate-200 focus:border-indigo-400 focus:ring-indigo-100"
+                className="mt-1 h-10 border-slate-200 focus:border-teal-400 focus:ring-teal-100"
                 placeholder="Min 6 characters"
                 value={pwdForm.newPwd}
                 onChange={e=>setPwdForm(p=>({...p,newPwd:e.target.value}))}
@@ -2865,7 +2865,7 @@ export default function CenterPortalPage() {
               <Label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">Confirm New Password *</Label>
               <Input
                 type="password"
-                className="mt-1 h-10 border-slate-200 focus:border-indigo-400 focus:ring-indigo-100"
+                className="mt-1 h-10 border-slate-200 focus:border-teal-400 focus:ring-teal-100"
                 placeholder="Re-enter new password"
                 value={pwdForm.confirm}
                 onChange={e=>setPwdForm(p=>({...p,confirm:e.target.value}))}
@@ -2879,7 +2879,7 @@ export default function CenterPortalPage() {
             <Button variant="outline" onClick={()=>{ setPwdOpen(false); setPwdForm({current:'',newPwd:'',confirm:''}); }} className="border-slate-200">
               Cancel
             </Button>
-            <Button onClick={handleChangePassword} disabled={pwdSaving} className="bg-indigo-600 hover:bg-indigo-700">
+            <Button onClick={handleChangePassword} disabled={pwdSaving} className="bg-teal-600 hover:bg-teal-700">
               {pwdSaving && <Loader2 className="h-4 w-4 mr-1 animate-spin"/>}
               Update Password
             </Button>

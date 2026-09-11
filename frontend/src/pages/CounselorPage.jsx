@@ -34,7 +34,7 @@ const isViewerActor = actor => actor?.role === 'ViewerCounselor';
 function ViewerAttribution({ label = 'Added', actor, at }) {
   if (!isViewerActor(actor)) return null;
   return (
-    <p className="mt-1 flex items-center gap-1 text-[11px] font-medium text-violet-600">
+    <p className="mt-1 flex items-center gap-1 text-[11px] font-medium text-sky-600">
       <User className="h-3 w-3"/>
       <span>{label} by Viewer Counselor: <span className="font-bold">{actor.name}</span>{at ? ` - ${fmtDt(at)}` : ''}</span>
     </p>
@@ -49,13 +49,13 @@ function CardRequestDate({ date, label = 'Submitted', actor, actorLabel = 'Added
     <div className="mt-3 flex items-end justify-between gap-2">
       <div className="min-w-0">
         {showAdded && (
-          <p className="flex items-center gap-1 text-[11px] font-medium text-violet-600">
+          <p className="flex items-center gap-1 text-[11px] font-medium text-sky-600">
             <User className="h-3 w-3 flex-shrink-0"/>
             <span>{actorLabel} by Viewer Counselor: <span className="font-bold">{actor.name}</span></span>
           </p>
         )}
         {showUpdated && (
-          <p className="flex items-center gap-1 text-[11px] font-medium text-violet-600">
+          <p className="flex items-center gap-1 text-[11px] font-medium text-sky-600">
             <User className="h-3 w-3 flex-shrink-0"/>
             <span>Updated by Viewer Counselor: <span className="font-bold">{updatedActor.name}</span></span>
           </p>
@@ -109,9 +109,9 @@ function PaymentInfo({ tx, className = '' }) {
       <ViewerAttribution label="Added" actor={tx.recordedBy} at={tx.createdAt || tx.paidAt}/>
       {!isViewerActor(tx.recordedBy) && <ViewerAttribution label="Updated" actor={tx.lastUpdatedBy} at={tx.lastUpdatedAt}/>}
       {tx.paidToAccountLabel && (
-        <div className="mt-1 bg-indigo-50 border border-indigo-200 rounded-lg px-2.5 py-1.5">
-          <span className="text-xs font-bold text-indigo-500 uppercase tracking-wider mr-1.5">Paid To</span>
-          <span className="text-xs font-semibold text-indigo-800">{tx.paidToAccountLabel}</span>
+        <div className="mt-1 bg-teal-50 border border-teal-200 rounded-lg px-2.5 py-1.5">
+          <span className="text-xs font-bold text-teal-500 uppercase tracking-wider mr-1.5">Paid To</span>
+          <span className="text-xs font-semibold text-teal-800">{tx.paidToAccountLabel}</span>
         </div>
       )}
     </div>
@@ -136,7 +136,7 @@ function FeePaymentPanel({ payment, status = 'pending_counselor', accMap = {} })
           <PaymentInfo tx={tx}/>
           {tx.paymentScreenshot && (
             <a href={`${MEDIA}${tx.paymentScreenshot}`} target="_blank" rel="noreferrer"
-              className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-100"
+              className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5 hover:bg-teal-100"
               onClick={e => e.stopPropagation()}>
               <Download className="h-3 w-3"/>View Payment Screenshot
             </a>
@@ -152,10 +152,10 @@ const STATUS_COLORS = {
   Draft:              'bg-slate-100 text-slate-600 border border-slate-200',
   Submitted:          'bg-blue-50 text-blue-700 border border-blue-200',
   Changes_Requested:  'bg-amber-50 text-amber-700 border border-amber-300',
-  Counselor_Approved: 'bg-indigo-50 text-indigo-700 border border-indigo-200',
+  Counselor_Approved: 'bg-teal-50 text-teal-700 border border-teal-200',
   Rejected:           'bg-red-50 text-red-600 border border-red-200',
   Accountant_Pending: 'bg-orange-50 text-orange-700 border border-orange-200',
-  Sent_To_University: 'bg-purple-50 text-purple-700 border border-purple-200',
+  Sent_To_University: 'bg-cyan-50 text-cyan-700 border border-cyan-200',
   Enrolled:           'bg-emerald-50 text-emerald-700 border border-emerald-200',
   Accountant_Rejected:'bg-red-50 text-red-600 border border-red-200',
   University_Rejected: 'bg-orange-50 text-orange-700 border border-orange-300',
@@ -163,11 +163,11 @@ const STATUS_COLORS = {
 const DOC_COLORS = {
   Requested:          'bg-blue-50 text-blue-700 border border-blue-200',
   Changes_Requested:  'bg-amber-50 text-amber-700 border border-amber-300',
-  Forwarded:          'bg-indigo-50 text-indigo-700 border border-indigo-200',
+  Forwarded:          'bg-teal-50 text-teal-700 border border-teal-200',
   Fee_Approved:       'bg-green-50 text-green-700 border border-green-200',
   Fee_Rejected:       'bg-red-50 text-red-600 border border-red-200',
-  Sent_To_University: 'bg-purple-50 text-purple-700 border border-purple-200',
-  University_Dispatched:'bg-violet-50 text-violet-700 border border-violet-200',
+  Sent_To_University: 'bg-cyan-50 text-cyan-700 border border-cyan-200',
+  University_Dispatched:'bg-sky-50 text-sky-700 border border-sky-200',
   Counselor_Received: 'bg-amber-50 text-amber-700 border border-amber-300',
   Center_Notified:    'bg-amber-50 text-amber-700 border border-amber-300',
   Payment_Submitted:  'bg-blue-50 text-blue-700 border border-blue-200',
@@ -209,8 +209,8 @@ function StudentModal({ student, onClose }) {
       <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2.5 flex-wrap">
-            <div className="h-8 w-8 rounded-lg bg-indigo-100 flex items-center justify-center flex-shrink-0">
-              <span className="text-sm font-bold text-indigo-700">{student.name?.charAt(0)?.toUpperCase()}</span>
+            <div className="h-8 w-8 rounded-lg bg-teal-100 flex items-center justify-center flex-shrink-0">
+              <span className="text-sm font-bold text-teal-700">{student.name?.charAt(0)?.toUpperCase()}</span>
             </div>
             <span className="font-bold text-slate-800">{student.name}</span>
             <span className={`text-xs px-2.5 py-0.5 rounded-full font-semibold ${st}`}>{student.applicationStatus?.replace(/_/g,' ')}</span>
@@ -260,7 +260,7 @@ function StudentModal({ student, onClose }) {
                   {s.submissionDocs.map((d,i)=>(
                     <span key={i} className="text-xs flex items-center gap-1.5 bg-white border border-slate-200 rounded-full px-3 py-1 font-medium text-slate-700">
                       <Paperclip className="h-3 w-3 text-slate-400"/>
-                      {d.fileUrl?<a href={`${MEDIA}${d.fileUrl}`} target="_blank" rel="noreferrer" className="text-indigo-600 underline">{d.name}</a>:<span>{d.name}</span>}
+                      {d.fileUrl?<a href={`${MEDIA}${d.fileUrl}`} target="_blank" rel="noreferrer" className="text-teal-600 underline">{d.name}</a>:<span>{d.name}</span>}
                     </span>
                   ))}
                 </div>
@@ -285,7 +285,7 @@ function StudentModal({ student, onClose }) {
                         {d.sizeKb > 0 && <span className="text-xs text-slate-400 shrink-0">{d.sizeKb}KB</span>}
                       </div>
                       {d.fileUrl
-                        ? <a href={`${MEDIA}${d.fileUrl}`} target="_blank" rel="noreferrer" className="text-xs text-indigo-600 underline shrink-0 ml-2 font-medium">View</a>
+                        ? <a href={`${MEDIA}${d.fileUrl}`} target="_blank" rel="noreferrer" className="text-xs text-teal-600 underline shrink-0 ml-2 font-medium">View</a>
                         : <span className="text-xs text-slate-400 shrink-0 ml-2">No file</span>
                       }
                     </div>
@@ -327,7 +327,7 @@ function StudentModal({ student, onClose }) {
                   {[
                     ['Total',    fmt(payment.totalFee),   'text-slate-700',   'bg-slate-50 border-slate-200'],
                     ['Discount', fmt(payment.discount),   'text-amber-600',   'bg-amber-50 border-amber-200'],
-                    ['Net',      fmt(payment.netFee),     'text-indigo-600',  'bg-indigo-50 border-indigo-200'],
+                    ['Net',      fmt(payment.netFee),     'text-teal-600',  'bg-teal-50 border-teal-200'],
                     ['Paid',     fmt(payment.paidAmount), 'text-emerald-600', 'bg-emerald-50 border-emerald-200'],
                   ].map(([l,v,vc,bg])=>(
                     <div key={l} className={`rounded-xl border p-3 text-center ${bg}`}>
@@ -400,7 +400,7 @@ function CenterModal({ center, onClose }) {
                 <p className="text-sm text-slate-400 italic text-center py-6">No students in this center</p>
               ):students.map(s=>(
                 <div key={s._id}
-                  className="flex items-center justify-between bg-white border border-slate-200 rounded-lg px-3 py-2.5 cursor-pointer hover:border-indigo-300 hover:shadow-sm transition-all"
+                  className="flex items-center justify-between bg-white border border-slate-200 rounded-lg px-3 py-2.5 cursor-pointer hover:border-teal-300 hover:shadow-sm transition-all"
                   onClick={()=>{onClose();navigate(`/students/${s._id}`);}}>
                   <div>
                     <div className="text-sm font-semibold text-slate-800">{s.name}</div>
@@ -432,8 +432,8 @@ function DocModal({ doc, onClose, onForward, onForwardToCenter, onForwardPayment
       <DialogContent className="max-w-lg max-h-[85vh] flex flex-col">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2.5">
-            <div className="h-8 w-8 rounded-lg bg-indigo-100 flex items-center justify-center flex-shrink-0">
-              <FileText className="h-4 w-4 text-indigo-600"/>
+            <div className="h-8 w-8 rounded-lg bg-teal-100 flex items-center justify-center flex-shrink-0">
+              <FileText className="h-4 w-4 text-teal-600"/>
             </div>
             <div>
               <div className="font-bold text-slate-800">{doc.name}</div>
@@ -489,7 +489,7 @@ function DocModal({ doc, onClose, onForward, onForwardToCenter, onForwardPayment
                     <div className="flex items-center gap-2 flex-wrap mb-0.5">
                       <span className="font-bold text-emerald-600">{fmt(p.amount)}</span>
                       {p.mode && <span className="text-xs bg-slate-100 text-slate-600 border border-slate-200 px-1.5 py-0.5 rounded font-medium">{p.mode}</span>}
-                      {p.paidToAccountLabel && <span className="text-xs bg-indigo-50 text-indigo-700 border border-indigo-200 px-1.5 py-0.5 rounded font-medium">→ {p.paidToAccountLabel}</span>}
+                      {p.paidToAccountLabel && <span className="text-xs bg-teal-50 text-teal-700 border border-teal-200 px-1.5 py-0.5 rounded font-medium">→ {p.paidToAccountLabel}</span>}
                       <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${p.verified?'bg-emerald-100 text-emerald-700 border border-emerald-200':'bg-amber-100 text-amber-700 border border-amber-200'}`}>{p.verified?'Verified':'Pending'}</span>
                       <span className="text-xs text-slate-400 ml-auto">{fmtDt(p.paidAt)}</span>
                     </div>
@@ -516,12 +516,12 @@ function DocModal({ doc, onClose, onForward, onForwardToCenter, onForwardPayment
         <DialogFooter className="gap-2 flex-wrap">
           <Button variant="outline" onClick={onClose} className="border-slate-200 text-slate-600">Close</Button>
           {!readOnly && doc.status==='Requested'&&(
-            <Button onClick={()=>{onForward(doc);onClose();}} className="bg-indigo-600 hover:bg-indigo-700">
+            <Button onClick={()=>{onForward(doc);onClose();}} className="bg-teal-600 hover:bg-teal-700">
               <Send className="h-4 w-4 mr-1.5"/>Forward to Accountant
             </Button>
           )}
           {!readOnly && doc.status==='Counselor_Received'&&(
-            <Button onClick={()=>{onForwardToCenter(doc);onClose();}} className="bg-violet-600 hover:bg-violet-700">
+            <Button onClick={()=>{onForwardToCenter(doc);onClose();}} className="bg-sky-600 hover:bg-sky-700">
               <Send className="h-4 w-4 mr-1.5"/>Forward to Center
             </Button>
           )}
@@ -543,13 +543,13 @@ function StudentCard({ s, accent = 'border-blue-200', children, onClick, feePaym
       <div className="p-4">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-start gap-3 flex-1 min-w-0 cursor-pointer" onClick={onClick}>
-          <div className="h-10 w-10 rounded-xl bg-indigo-100 flex items-center justify-center text-sm font-bold text-indigo-700 flex-shrink-0 mt-0.5">
+          <div className="h-10 w-10 rounded-xl bg-teal-100 flex items-center justify-center text-sm font-bold text-teal-700 flex-shrink-0 mt-0.5">
             {s.name?.charAt(0)?.toUpperCase() || '?'}
           </div>
           <div className="flex-1 min-w-0">
             <div className="font-semibold text-slate-800">{s.name}</div>
             <div className="text-xs text-slate-400 mt-0.5">{s.center?.name} · {s.courseName} {s.courseYear}</div>
-            {s.university && <div className="text-xs text-purple-600 font-medium mt-0.5">🎓 {s.university?.name||s.university}</div>}
+            {s.university && <div className="text-xs text-cyan-600 font-medium mt-0.5">🎓 {s.university?.name||s.university}</div>}
             {s.enrollmentNumber && (
   <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full w-fit block mt-0.5">
     {s.enrollmentNumber}
@@ -567,7 +567,7 @@ function StudentCard({ s, accent = 'border-blue-200', children, onClick, feePaym
                   <span key={i} className="text-xs flex items-center gap-1 bg-slate-50 border border-slate-200 rounded-full px-2 py-0.5 text-slate-600">
                     <Paperclip className="h-2.5 w-2.5 text-slate-400"/>
                     {d.fileUrl
-                      ?<a href={`${MEDIA}${d.fileUrl}`} target="_blank" rel="noreferrer" className="text-indigo-600 underline" onClick={e=>e.stopPropagation()}>{d.name}</a>
+                      ?<a href={`${MEDIA}${d.fileUrl}`} target="_blank" rel="noreferrer" className="text-teal-600 underline" onClick={e=>e.stopPropagation()}>{d.name}</a>
                       :<span>{d.name}</span>
                     }
                   </span>
@@ -659,7 +659,7 @@ function DocCard({ d, accent, badge, badgeColor, onClick, children, paySummary, 
   <div className="mt-1.5">
     <a href={`${MEDIA}${p.paymentScreenshot}`}
       target="_blank" rel="noreferrer"
-      className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-100 transition-colors">
+      className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5 hover:bg-teal-100 transition-colors">
       <Download className="h-3 w-3"/>View Payment Screenshot
     </a>
   </div>
@@ -720,7 +720,7 @@ function SettlementRequestCard({ student: s, saving, onForward, readOnly=false }
             <Button
               size="sm"
               onClick={() => setNoteOpen(true)}
-              className="bg-indigo-600 hover:bg-indigo-700 h-8 text-xs"
+              className="bg-teal-600 hover:bg-teal-700 h-8 text-xs"
             >
               <Send className="h-3.5 w-3.5 mr-1.5"/>Forward to Accountant
             </Button>
@@ -733,7 +733,7 @@ function SettlementRequestCard({ student: s, saving, onForward, readOnly=false }
               onChange={e => setNote(e.target.value)}
               placeholder="e.g. Verified — please process refund of ₹15,000…"
               rows={2}
-              className="w-full text-xs border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:border-indigo-400 resize-none"
+              className="w-full text-xs border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:border-teal-400 resize-none"
             />
             <div className="flex gap-2">
               <Button
@@ -748,7 +748,7 @@ function SettlementRequestCard({ student: s, saving, onForward, readOnly=false }
                 size="sm"
                 disabled={saving}
                 onClick={() => onForward(s, note)}
-                className="bg-indigo-600 hover:bg-indigo-700 h-8 text-xs"
+                className="bg-teal-600 hover:bg-teal-700 h-8 text-xs"
               >
                 {saving && <Loader2 className="h-3.5 w-3.5 mr-1 animate-spin"/>}
                 <Send className="h-3.5 w-3.5 mr-1.5"/>Confirm Forward
@@ -792,14 +792,14 @@ function PaidToAccountBox({ tx, accMap }) {
   const isUPI = acc?.mode === 'UPI';
   const isBank = acc?.mode === 'Bank Transfer';
   return (
-    <div className="mt-2 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-2.5 space-y-1">
+    <div className="mt-2 bg-teal-50 border border-teal-200 rounded-lg px-3 py-2.5 space-y-1">
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-xs font-bold text-indigo-500 uppercase tracking-wider">Paid To</span>
-        <span className="text-sm font-semibold text-indigo-800">{label}</span>
+        <span className="text-xs font-bold text-teal-500 uppercase tracking-wider">Paid To</span>
+        <span className="text-sm font-semibold text-teal-800">{label}</span>
         {acc?.mode && <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${isUPI ? 'bg-blue-100 text-blue-700' : 'bg-emerald-100 text-emerald-700'}`}>{acc.mode}</span>}
       </div>
       {acc && (
-        <div className="space-y-0.5 text-xs text-indigo-700">
+        <div className="space-y-0.5 text-xs text-teal-700">
           {isUPI && acc.upiId   && <div>UPI ID: <span className="font-mono font-bold">{acc.upiId}</span></div>}
           {isUPI && acc.upiName && <div>Name: <span className="font-semibold">{acc.upiName}</span></div>}
           {isBank && acc.bankName      && <div>Bank: <span className="font-semibold">{acc.bankName}</span></div>}
@@ -1068,7 +1068,7 @@ export default function CounselorPage() {
   if (loading) return (
     <div className="flex h-64 items-center justify-center">
       <div className="text-center">
-        <Loader2 className="h-8 w-8 animate-spin text-indigo-400 mx-auto mb-2"/>
+        <Loader2 className="h-8 w-8 animate-spin text-teal-400 mx-auto mb-2"/>
         <p className="text-sm text-slate-400">Loading dashboard…</p>
       </div>
     </div>
@@ -1079,7 +1079,7 @@ export default function CounselorPage() {
     <span className="flex items-center gap-1.5">
       {label}
       {count > 0 && (
-        <span className={`text-xs font-bold rounded-full h-5 min-w-5 flex items-center justify-center px-1.5 ${color || 'bg-indigo-100 text-indigo-700'}`}>
+        <span className={`text-xs font-bold rounded-full h-5 min-w-5 flex items-center justify-center px-1.5 ${color || 'bg-teal-100 text-teal-700'}`}>
           {count}
         </span>
       )}
@@ -1096,7 +1096,7 @@ export default function CounselorPage() {
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" onClick={()=>setCenterSwitchOpen(true)}
-            className="border-indigo-200 text-indigo-700 hover:bg-indigo-50 gap-1.5">
+            className="border-teal-200 text-teal-700 hover:bg-teal-50 gap-1.5">
             <Building2 className="h-4 w-4"/>Switch Center
           </Button>
           <Button variant="outline" size="sm" onClick={load} disabled={loading}
@@ -1113,7 +1113,7 @@ export default function CounselorPage() {
           { label:'Pending Review',  value: pending.length,        color:'text-blue-600',   bg:'bg-blue-50 border-blue-200',    dot:'bg-blue-400'   },
           { label:'Acct Rejected',   value: acctRejected.length,   color:'text-red-600',    bg:'bg-red-50 border-red-200',      dot:'bg-red-400'    },
           { label:'Fee Payments',    value: visibleFeePayments.length,    color:'text-orange-600', bg:'bg-orange-50 border-orange-200',dot:'bg-orange-400' },
-          { label:'From Dispatch',   value: fromDisp.length,       color:'text-violet-600', bg:'bg-violet-50 border-violet-200',dot:'bg-violet-400' },
+          { label:'From Dispatch',   value: fromDisp.length,       color:'text-sky-600', bg:'bg-sky-50 border-sky-200',dot:'bg-sky-400' },
           { label:'Delivery Pending',value: deliveryPending.length, color:'text-rose-600',   bg:'bg-rose-50 border-rose-200',    dot:'bg-rose-400'   },
         ].map(({ label, value, color, bg, dot }) => (
           <div key={label} className={`rounded-xl border p-4 ${bg}`}>
@@ -1134,10 +1134,10 @@ export default function CounselorPage() {
           {[
             { val:'review',    label:'Review',           count: pending.length,          dot:'bg-blue-500' },
             { val:'acctreject',label:'Acct Rejected',     count: acctRejected.length,     dot:'bg-red-500'  },
-            { val:'docs',      label:'Doc Requests',      count: newDocs.length,          dot:'bg-indigo-500'},
+            { val:'docs',      label:'Doc Requests',      count: newDocs.length,          dot:'bg-teal-500'},
             { val:'feepay',    label:'Fee Payments',      count: visibleFeePayments.length,      dot:'bg-orange-500'},
             { val:'payment',   label:'Doc Payments',      count: paymentPending.length,   dot:'bg-emerald-500'},
-            { val:'dispatch',  label:'From Dispatch',     count: fromDisp.length,         dot:'bg-violet-500'},
+            { val:'dispatch',  label:'From Dispatch',     count: fromDisp.length,         dot:'bg-sky-500'},
             { val:'delipend',  label:'Delivery Pending',  count: deliveryPending.length,  dot:'bg-rose-500'},
             { val:'settlement',label:'Settlement',        count: visibleSettlementQueue.length,  dot:'bg-amber-500'},
             { val:'students',  label:'All Students',      count: allStudents.length,      dot:'' },
@@ -1160,7 +1160,7 @@ export default function CounselorPage() {
           {pending.length===0 ? <EmptyState icon={CheckCircle2} message="No applications pending review"/> :
           pending.map(s=>(
             <StudentCard key={s._id} s={s} accent="border-blue-200" onClick={()=>setStudentModal(s)} feePayment={studentFeeMap[String(s._id)]} accMap={payAccounts} requestDate={getStudentSubmittedAt(s)}>
-              <Button size="sm" variant="ghost" onClick={()=>setStudentModal(s)} className="h-8 w-8 p-0 text-slate-400 hover:text-indigo-600">
+              <Button size="sm" variant="ghost" onClick={()=>setStudentModal(s)} className="h-8 w-8 p-0 text-slate-400 hover:text-teal-600">
                 <Eye className="h-4 w-4"/>
               </Button>
               {!isViewerCounselor && <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 h-8 text-xs"
@@ -1194,7 +1194,7 @@ export default function CounselorPage() {
           {acctRejected.length===0 ? <EmptyState icon={XCircle} message="No rejected applications"/> :
           acctRejected.map(s=>(
             <StudentCard key={s._id} s={s} accent="border-red-200" onClick={()=>setStudentModal(s)}>
-              <Button size="sm" variant="ghost" onClick={()=>setStudentModal(s)} className="h-8 w-8 p-0 text-slate-400 hover:text-indigo-600">
+              <Button size="sm" variant="ghost" onClick={()=>setStudentModal(s)} className="h-8 w-8 p-0 text-slate-400 hover:text-teal-600">
                 <Eye className="h-4 w-4"/>
               </Button>
               {!isViewerCounselor && <Button size="sm" variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50 h-8 text-xs"
@@ -1223,7 +1223,7 @@ export default function CounselorPage() {
                   type="checkbox"
                   checked={newDocs.length > 0 && newDocs.every(d => selectedDocIds.includes(String(d._id)))}
                   onChange={e => setSelectedDocIds(e.target.checked ? newDocs.map(d => String(d._id)) : [])}
-                  className="h-4 w-4 accent-indigo-600"
+                  className="h-4 w-4 accent-teal-600"
                 />
                 Select all document requests
               </label>
@@ -1235,7 +1235,7 @@ export default function CounselorPage() {
           {newDocs.length===0 ? <EmptyState message="No new document requests"/> :
           newDocs.map(d=>(
             <DocCard key={d._id} d={d} paySummary={docPayments[d.student?._id]} accMap={payAccounts}
-              accent="border-indigo-200"
+              accent="border-teal-200"
               badge={d.status?.replace(/_/g,' ')}
               badgeColor={DOC_COLORS[d.status]||'bg-slate-100 text-slate-600'}
               onClick={()=>setDocModal(d)}>
@@ -1245,10 +1245,10 @@ export default function CounselorPage() {
                     type="checkbox"
                     checked={selectedDocIds.includes(String(d._id))}
                     onChange={() => toggleDocSelection(d._id)}
-                    className="h-4 w-4 accent-indigo-600"
+                    className="h-4 w-4 accent-teal-600"
                     aria-label={`Select ${d.name}`}
                   />
-                  <Button size="sm" className="bg-indigo-600 hover:bg-indigo-700 text-xs h-8"
+                  <Button size="sm" className="bg-teal-600 hover:bg-teal-700 text-xs h-8"
                     onClick={e=>{e.stopPropagation();forwardDoc(d);}}>
                     <Send className="h-3.5 w-3.5 mr-1.5"/>Forward
                   </Button>
@@ -1317,7 +1317,7 @@ export default function CounselorPage() {
   <div className="mt-1.5">
     <a href={`${(import.meta.env.VITE_API_URL||'http://localhost:5000/api').replace('/api','')}${tx.paymentScreenshot}`}
       target="_blank" rel="noreferrer"
-      className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-100 transition-colors">
+      className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 rounded-lg px-3 py-1.5 hover:bg-teal-100 transition-colors">
       <Download className="h-3 w-3"/>View Payment Screenshot
     </a>
   </div>
@@ -1358,7 +1358,7 @@ export default function CounselorPage() {
                   type="checkbox"
                   checked={paymentPending.length > 0 && paymentPending.every(d => selectedDocIds.includes(String(d._id)))}
                   onChange={e => setSelectedDocIds(e.target.checked ? paymentPending.map(d => String(d._id)) : [])}
-                  className="h-4 w-4 accent-indigo-600"
+                  className="h-4 w-4 accent-teal-600"
                 />
                 Select all payment requests
               </label>
@@ -1379,7 +1379,7 @@ export default function CounselorPage() {
                   type="checkbox"
                   checked={selectedDocIds.includes(String(d._id))}
                   onChange={() => toggleDocSelection(d._id)}
-                  className="h-4 w-4 accent-indigo-600"
+                  className="h-4 w-4 accent-teal-600"
                   aria-label={`Select ${d.name}`}
                 />
                   <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-xs h-8"
@@ -1405,7 +1405,7 @@ export default function CounselorPage() {
                   type="checkbox"
                   checked={fromDisp.length > 0 && fromDisp.every(d => selectedDocIds.includes(String(d._id)))}
                   onChange={e => setSelectedDocIds(e.target.checked ? fromDisp.map(d => String(d._id)) : [])}
-                  className="h-4 w-4 accent-indigo-600"
+                  className="h-4 w-4 accent-teal-600"
                 />
                 Select all scanned documents
               </label>
@@ -1417,19 +1417,19 @@ export default function CounselorPage() {
           {fromDisp.length===0 ? <EmptyState icon={Download} message="No documents from dispatch"/> :
           fromDisp.map(d=>(
             <DocCard key={d._id} d={d} paySummary={docPayments[d.student?._id]} accMap={payAccounts}
-              accent="border-violet-200"
+              accent="border-sky-200"
               badge="Scan Ready"
-              badgeColor="bg-violet-50 text-violet-700 border border-violet-200"
+              badgeColor="bg-sky-50 text-sky-700 border border-sky-200"
               onClick={()=>setDocModal(d)}>
               {!isViewerCounselor && <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
                 <input
                   type="checkbox"
                   checked={selectedDocIds.includes(String(d._id))}
                   onChange={() => toggleDocSelection(d._id)}
-                  className="h-4 w-4 accent-indigo-600"
+                  className="h-4 w-4 accent-teal-600"
                   aria-label={`Select ${d.name}`}
                 />
-                <Button size="sm" className="bg-violet-600 hover:bg-violet-700 text-xs h-8"
+                <Button size="sm" className="bg-sky-600 hover:bg-sky-700 text-xs h-8"
                   onClick={e=>{e.stopPropagation();forwardDocToCenter(d);}}>
                   <Send className="h-3.5 w-3.5 mr-1.5"/>Forward to Center
                 </Button>
@@ -1513,7 +1513,7 @@ export default function CounselorPage() {
           <div className="space-y-1.5">
             {filtered.map(s=>(
               <div key={s._id}
-                className="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-4 py-3 cursor-pointer hover:border-indigo-300 hover:shadow-sm transition-all group"
+                className="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-4 py-3 cursor-pointer hover:border-teal-300 hover:shadow-sm transition-all group"
                 onClick={()=>navigate(`/students/${s._id}`)}>
                 <div className="flex items-center gap-3">
                   <div className="h-8 w-8 rounded-lg bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-600 flex-shrink-0">
@@ -1542,7 +1542,7 @@ export default function CounselorPage() {
         <TabsContent value="centers" className="space-y-2 mt-4">
           {centers.map(c=>(
             <div key={c._id}
-              className="bg-white rounded-xl border border-slate-200 shadow-sm hover:border-indigo-300 hover:shadow transition-all cursor-pointer group"
+              className="bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-300 hover:shadow transition-all cursor-pointer group"
               onClick={()=>setCenterModal(c)}>
               <div className="p-4 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
@@ -1553,7 +1553,7 @@ export default function CounselorPage() {
                     <div className="font-semibold text-slate-800">{c.name}</div>
                     <div className="text-xs text-slate-400 mt-0.5">{c.city}{c.state?`, ${c.state}`:''}</div>
                     {c.assignedCounselor?.name && (
-                      <div className="text-xs text-indigo-600 font-medium mt-0.5 flex items-center gap-1">
+                      <div className="text-xs text-teal-600 font-medium mt-0.5 flex items-center gap-1">
                         <Users className="h-3 w-3"/>Counselor: {c.assignedCounselor.name}
                       </div>
                     )}
@@ -1664,7 +1664,7 @@ export default function CounselorPage() {
         <DialogContent className="max-w-xl">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <Building2 className="h-5 w-5 text-indigo-600"/>Switch to Center Dashboard
+              <Building2 className="h-5 w-5 text-teal-600"/>Switch to Center Dashboard
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-3">
@@ -1686,7 +1686,7 @@ export default function CounselorPage() {
                 <button
                   key={center._id}
                   type="button"
-                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-left hover:border-indigo-300 hover:bg-indigo-50"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-left hover:border-teal-300 hover:bg-teal-50"
                   onClick={() => {
                     switchToCenter(center);
                     setCenterSwitchOpen(false);

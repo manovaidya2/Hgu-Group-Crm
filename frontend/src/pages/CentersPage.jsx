@@ -82,9 +82,9 @@ function CheckboxGroup({ label, options, selected, onChange }) {
 
 const STATUS_COLORS = {
   Draft:'bg-gray-100 text-gray-700', Submitted:'bg-blue-100 text-blue-700',
-  Changes_Requested:'bg-amber-100 text-amber-700', Counselor_Approved:'bg-indigo-100 text-indigo-700',
+  Changes_Requested:'bg-amber-100 text-amber-700', Counselor_Approved:'bg-teal-100 text-teal-700',
   Rejected:'bg-red-100 text-red-700', Accountant_Pending:'bg-amber-100 text-amber-700',
-  Accountant_Rejected:'bg-red-100 text-red-700', Sent_To_University:'bg-purple-100 text-purple-700',
+  Accountant_Rejected:'bg-red-100 text-red-700', Sent_To_University:'bg-cyan-100 text-cyan-700',
   Enrolled:'bg-emerald-100 text-emerald-700',
 };
 const STATUS_LABELS = {
@@ -356,12 +356,12 @@ function CenterCard({ center, isAdmin, isViewer = false, canViewerManage = false
               {center.emailId && <span>{center.emailId}</span>}
             </div>
             {center.assignedCounselor && (
-              <div className="text-xs text-indigo-600 mt-1 flex items-center gap-1">
+              <div className="text-xs text-teal-600 mt-1 flex items-center gap-1">
                 <User className="h-3 w-3"/>Counselor: {center.assignedCounselor.name}
               </div>
             )}
             {viewerCounselor && (
-              <div className="text-xs text-violet-600 mt-1 flex items-center gap-1">
+              <div className="text-xs text-sky-600 mt-1 flex items-center gap-1">
                 <Eye className="h-3 w-3"/>Viewer Counselor: {viewerCounselor.name || viewerCounselor.email}
               </div>
             )}
@@ -445,7 +445,7 @@ function CenterCard({ center, isAdmin, isViewer = false, canViewerManage = false
               <div>
                 <div className="text-xs text-muted-foreground mb-1.5 flex items-center gap-1"><GraduationCap className="h-3 w-3"/>Program Interest</div>
                 <div className="flex flex-wrap gap-1.5">
-                  {programBadges.map(p => <span key={p} className="text-xs bg-purple-50 text-purple-700 border border-purple-200 px-2 py-0.5 rounded-full">{p}</span>)}
+                  {programBadges.map(p => <span key={p} className="text-xs bg-cyan-50 text-cyan-700 border border-cyan-200 px-2 py-0.5 rounded-full">{p}</span>)}
                 </div>
               </div>
             )}
@@ -664,7 +664,7 @@ function CenterCard({ center, isAdmin, isViewer = false, canViewerManage = false
                 <div className="flex flex-wrap gap-1.5">
                   {allowedUnis.map(u => (
                     <span key={u._id} className="text-xs px-2 py-1 rounded-full border flex items-center gap-1"
-                      style={{ background: (u.avatarColor || '#6366f1') + '20', borderColor: u.avatarColor || '#6366f1', color: u.avatarColor || '#6366f1' }}>
+                      style={{ background: (u.avatarColor || '#0f766e') + '20', borderColor: u.avatarColor || '#0f766e', color: u.avatarColor || '#0f766e' }}>
                       {u.name}{u.shortName ? ` (${u.shortName})` : ''}
                     </span>
                   ))}
@@ -762,7 +762,7 @@ function CenterCard({ center, isAdmin, isViewer = false, canViewerManage = false
                     />
                     <div className="flex items-center gap-2 min-w-0">
                       <div className="h-6 w-6 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
-                        style={{ background: u.avatarColor || '#6366f1' }}>
+                        style={{ background: u.avatarColor || '#0f766e' }}>
                         {u.shortName?.[0] || u.name[0]}
                       </div>
                       <div>

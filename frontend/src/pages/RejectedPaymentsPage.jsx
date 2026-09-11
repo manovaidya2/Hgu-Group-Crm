@@ -136,7 +136,7 @@ export default function RejectedPaymentsPage() {
                       )}
                       {r.tx.paymentScreenshot && (
                         <a href={`${MEDIA}${r.tx.paymentScreenshot}`} target="_blank" rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs text-indigo-600 underline mt-1">
+                          className="inline-flex items-center gap-1.5 text-xs text-teal-600 underline mt-1">
                           <Download className="h-3 w-3"/>View Screenshot
                         </a>
                       )}

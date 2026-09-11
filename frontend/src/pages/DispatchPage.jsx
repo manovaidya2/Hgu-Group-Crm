@@ -51,9 +51,9 @@ const fmtMoney = value => `₹${Number(value || 0).toLocaleString('en-IN')}`;
 
 const STATUS_INFO = {
   Sent_To_University:    { label:'Requested / Awaiting Receipt', color:'bg-amber-100 text-amber-700' },
-  University_Dispatched: { label:'Incoming Courier',         color:'bg-purple-100 text-purple-700' },
+  University_Dispatched: { label:'Incoming Courier',         color:'bg-cyan-100 text-cyan-700' },
   Dispatch_Received:     { label:'Receipt Confirmed',         color:'bg-blue-100 text-blue-700' },
-  Scanned:               { label:'Scanned',                   color:'bg-indigo-100 text-indigo-700' },
+  Scanned:               { label:'Scanned',                   color:'bg-teal-100 text-teal-700' },
   Accountant_Received:   { label:'With Accountant',           color:'bg-orange-100 text-orange-700' },
   Counselor_Received:    { label:'With Counselor',            color:'bg-amber-100 text-amber-700' },
   Center_Notified:       { label:'Center Notified',           color:'bg-orange-100 text-orange-700' },
@@ -104,13 +104,13 @@ function DocDetailModal({ doc, onClose }) {
             </div>
           )}
           {doc.courierInfo?.trackingNo && (
-            <div className="border border-purple-200 bg-purple-50 rounded-lg p-3">
-              <p className="text-xs font-semibold text-purple-700 uppercase tracking-wide mb-2">🚚 University Courier Details</p>
+            <div className="border border-cyan-200 bg-cyan-50 rounded-lg p-3">
+              <p className="text-xs font-semibold text-cyan-700 uppercase tracking-wide mb-2">🚚 University Courier Details</p>
               {doc.university?.name && (
-                <div className="mb-2 bg-purple-100 rounded px-2 py-1.5 flex items-center gap-2">
+                <div className="mb-2 bg-cyan-100 rounded px-2 py-1.5 flex items-center gap-2">
                   <span className="text-xs text-muted-foreground">From University:</span>
-                  <span className="font-semibold text-purple-800">{doc.university.name}</span>
-                  {doc.university.shortName && <span className="text-xs text-purple-600">({doc.university.shortName})</span>}
+                  <span className="font-semibold text-cyan-800">{doc.university.name}</span>
+                  {doc.university.shortName && <span className="text-xs text-cyan-600">({doc.university.shortName})</span>}
                 </div>
               )}
               <div className="grid grid-cols-2 gap-2">
@@ -439,7 +439,7 @@ export default function DispatchPage() {
 
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
         {[
-          ['Incoming',   incoming.length,   'text-purple-600'],
+          ['Incoming',   incoming.length,   'text-cyan-600'],
           ['Scan',       scanPending.length,'text-blue-600'],
           ['In Progress',inProgress.length, 'text-amber-600'],
           ['Ready',      ready.length,      'text-green-600'],
@@ -458,7 +458,7 @@ export default function DispatchPage() {
             { val:'incoming', label:'Incoming',           count: incoming.length,    dot:'bg-blue-500',   icon: null },
             { val:'scan',     label:'Upload Scan',        count: scanPending.length, dot:'bg-amber-500',  icon: null },
             { val:'ready',    label:'Ready to Dispatch',  count: ready.length,       dot:'bg-emerald-500',icon: null },
-            { val:'progress', label:'In Progress',        count: inProgress.length,  dot:'bg-indigo-500', icon: null },
+            { val:'progress', label:'In Progress',        count: inProgress.length,  dot:'bg-teal-500', icon: null },
             { val:'done',     label:'All Dispatched',     count: dispatched.length,  dot:'',              icon: <History className="h-3.5 w-3.5"/> },
           ].map(({ val, label, count, dot, icon }) => (
             <TabsTrigger key={val} value={val}
@@ -475,11 +475,11 @@ export default function DispatchPage() {
 
         {/* ── University Records — permanent, never removed ── */}
         <TabsContent value="uni" className="space-y-3 mt-3">
-          <div className="flex items-start gap-2.5 bg-purple-50 border border-purple-200 rounded-xl px-4 py-3">
-            <div className="h-5 w-5 rounded-full bg-purple-200 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <GraduationCap className="h-3 w-3 text-purple-700"/>
+          <div className="flex items-start gap-2.5 bg-cyan-50 border border-cyan-200 rounded-xl px-4 py-3">
+            <div className="h-5 w-5 rounded-full bg-cyan-200 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <GraduationCap className="h-3 w-3 text-cyan-700"/>
             </div>
-            <p className="text-xs text-purple-700">
+            <p className="text-xs text-cyan-700">
               Permanent record of requested and received documents — stays visible at every stage.
             </p>
           </div>
@@ -499,12 +499,12 @@ export default function DispatchPage() {
             const isScanDone = POST_SCAN_STATUSES.includes(d.status);
             const st         = STATUS_INFO[d.status] || { label: d.status.replace(/_/g,' '), color: 'bg-slate-100 text-slate-600' };
 
-            const cardBorder   = isAwaiting ? 'border-purple-200' : isReceived ? 'border-teal-200' : 'border-indigo-200';
-            const headerBg     = isAwaiting ? 'bg-purple-50 border-purple-100' : isReceived ? 'bg-teal-50 border-teal-100' : 'bg-indigo-50 border-indigo-100';
-            const iconBg       = isAwaiting ? 'bg-purple-100' : isReceived ? 'bg-teal-100' : 'bg-indigo-100';
-            const iconColor    = isAwaiting ? 'text-purple-600' : isReceived ? 'text-teal-600' : 'text-indigo-600';
+            const cardBorder   = isAwaiting ? 'border-cyan-200' : isReceived ? 'border-teal-200' : 'border-teal-200';
+            const headerBg     = isAwaiting ? 'bg-cyan-50 border-cyan-100' : isReceived ? 'bg-teal-50 border-teal-100' : 'bg-teal-50 border-teal-100';
+            const iconBg       = isAwaiting ? 'bg-cyan-100' : isReceived ? 'bg-teal-100' : 'bg-teal-100';
+            const iconColor    = isAwaiting ? 'text-cyan-600' : isReceived ? 'text-teal-600' : 'text-teal-600';
             const stageText    = isAwaiting ? '📬 Awaiting Receipt' : isReceived ? '✓ Receipt Confirmed' : '✓ Scan Uploaded';
-            const stageTxtColor= isAwaiting ? 'text-purple-700' : isReceived ? 'text-teal-700' : 'text-indigo-700';
+            const stageTxtColor= isAwaiting ? 'text-cyan-700' : isReceived ? 'text-teal-700' : 'text-teal-700';
 
             return (
               <div key={d._id} className={`bg-white rounded-xl border shadow-sm ${cardBorder}`}>
@@ -539,7 +539,7 @@ export default function DispatchPage() {
                           </span>
                         )}
                         {d.university?.name && (
-                          <span className="text-xs font-semibold text-purple-700 bg-purple-50 border border-purple-200 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                          <span className="text-xs font-semibold text-cyan-700 bg-cyan-50 border border-cyan-200 px-2.5 py-0.5 rounded-full flex items-center gap-1">
                             🎓 {d.university.shortName || d.university.name}
                           </span>
                         )}
@@ -555,9 +555,9 @@ export default function DispatchPage() {
                       </p>
                       <div className="grid grid-cols-2 gap-2">
                         {d.university?.name && (
-                          <div className="bg-purple-50 rounded-lg border border-purple-200 px-3 py-2 col-span-2">
-                            <div className="text-xs text-purple-500 font-medium">From University</div>
-                            <div className="font-bold text-purple-800 mt-0.5">
+                          <div className="bg-cyan-50 rounded-lg border border-cyan-200 px-3 py-2 col-span-2">
+                            <div className="text-xs text-cyan-500 font-medium">From University</div>
+                            <div className="font-bold text-cyan-800 mt-0.5">
                               {d.university.name}{d.university.shortName ? ` (${d.university.shortName})` : ''}
                             </div>
                           </div>
@@ -570,7 +570,7 @@ export default function DispatchPage() {
                         )}
                         <div className="bg-white rounded-lg border border-slate-200 px-3 py-2">
                           <div className="text-xs text-slate-400 font-medium">Tracking Number</div>
-                          <div className="font-mono font-bold text-indigo-700 mt-0.5">{ci.trackingNo}</div>
+                          <div className="font-mono font-bold text-teal-700 mt-0.5">{ci.trackingNo}</div>
                         </div>
                         {ci.dispatchDate && (
                           <div className="bg-white rounded-lg border border-slate-200 px-3 py-2">
@@ -608,7 +608,7 @@ export default function DispatchPage() {
                         <Trash2 className="h-3.5 w-3.5 mr-1"/>Delete
                       </Button>
                       {isAwaiting && (
-                        <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-xs h-8"
+                        <Button size="sm" className="bg-cyan-600 hover:bg-cyan-700 text-xs h-8"
                           onClick={() => confirmReceipt(d._id)}>
                           <CheckCircle2 className="h-3.5 w-3.5 mr-1.5"/>Process Request
                         </Button>
@@ -624,7 +624,7 @@ export default function DispatchPage() {
                         </Button>
                       )}
                       {isScanDone && (
-                        <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 px-2.5 py-1 rounded-full flex items-center gap-1">
+                        <span className="text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-200 px-2.5 py-1 rounded-full flex items-center gap-1">
                           <CheckCircle2 className="h-3 w-3"/>Scan Done · {st.label}
                         </span>
                       )}
@@ -679,7 +679,7 @@ export default function DispatchPage() {
                   type="checkbox"
                   checked={ready.length > 0 && ready.every(d => selectedReadyIds.includes(String(d._id)))}
                   onChange={e => setSelectedReadyIds(e.target.checked ? ready.map(d => String(d._id)) : [])}
-                  className="h-4 w-4 accent-indigo-600"
+                  className="h-4 w-4 accent-teal-600"
                 />
                 Select all ready documents
               </label>
@@ -699,7 +699,7 @@ export default function DispatchPage() {
                       type="checkbox"
                       checked={selectedReadyIds.includes(String(d._id))}
                       onChange={() => toggleReadySelection(d._id)}
-                      className="h-4 w-4 accent-indigo-600"
+                      className="h-4 w-4 accent-teal-600"
                       aria-label={`Select ${d.name} for dispatch`}
                     />
                     <Button size="sm" className="bg-green-600 hover:bg-green-700" onClick={() => {
@@ -743,7 +743,7 @@ export default function DispatchPage() {
                         {d.student?.enrollmentNumber && <span className="text-xs font-mono text-emerald-700 ml-2">{d.student.enrollmentNumber}</span>}
                       </div>
                       {d.center?.name && <div className="text-xs text-muted-foreground">Center: {d.center.name}</div>}
-                      {d.university?.name && <div className="text-xs font-medium text-purple-700 mt-0.5">🎓 From: {d.university.name}{d.university.shortName ? ` (${d.university.shortName})` : ''}</div>}
+                      {d.university?.name && <div className="text-xs font-medium text-cyan-700 mt-0.5">🎓 From: {d.university.name}{d.university.shortName ? ` (${d.university.shortName})` : ''}</div>}
                       {(d.centerCourierInfo?.trackingNo || d.courierInfo?.trackingNo) && (
                         <div className="mt-2 bg-teal-50 border border-teal-200 rounded-lg px-3 py-2 text-xs space-y-0.5">
                           <div className="font-medium text-teal-800 flex items-center gap-1"><Truck className="h-3 w-3"/>Dispatched to Center</div>

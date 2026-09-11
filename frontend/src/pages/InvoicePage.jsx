@@ -597,19 +597,19 @@ function CenterInvoice() {
                 <th className="border-b border-r px-3 py-3" rowSpan="2">Student Name</th>
                 <th className="border-b border-r px-3 py-3" rowSpan="2">Enrollment Number</th>
                 <th className="border-b border-r px-3 py-3" rowSpan="2">Course</th>
-                <th className="border-b border-r bg-indigo-50 px-3 py-2 text-center text-indigo-700" colSpan="3">Course Fee</th>
-                <th className="border-b border-r bg-violet-50 px-3 py-2 text-center text-violet-700" colSpan="3">Document Charges</th>
+                <th className="border-b border-r bg-teal-50 px-3 py-2 text-center text-teal-700" colSpan="3">Course Fee</th>
+                <th className="border-b border-r bg-sky-50 px-3 py-2 text-center text-sky-700" colSpan="3">Document Charges</th>
                 <th className="border-b border-r bg-slate-200 px-3 py-2 text-center text-slate-800" colSpan="3">Grand Total</th>
                 <th className="border-b border-r px-3 py-3" rowSpan="2">{dateBasis === 'submittedAt' ? 'Submitted Date' : 'Added Date'}</th>
                 <th className="border-b px-3 py-3 text-center" rowSpan="2">Invoice</th>
               </tr>
               <tr>
-                <th className="border-b border-r bg-indigo-50 px-3 py-2 text-right text-indigo-700">Total</th>
-                <th className="border-b border-r bg-indigo-50 px-3 py-2 text-right text-emerald-700">Paid</th>
-                <th className="border-b border-r bg-indigo-50 px-3 py-2 text-right text-amber-700">Due</th>
-                <th className="border-b border-r bg-violet-50 px-3 py-2 text-right text-violet-700">Total</th>
-                <th className="border-b border-r bg-violet-50 px-3 py-2 text-right text-emerald-700">Paid</th>
-                <th className="border-b border-r bg-violet-50 px-3 py-2 text-right text-amber-700">Due</th>
+                <th className="border-b border-r bg-teal-50 px-3 py-2 text-right text-teal-700">Total</th>
+                <th className="border-b border-r bg-teal-50 px-3 py-2 text-right text-emerald-700">Paid</th>
+                <th className="border-b border-r bg-teal-50 px-3 py-2 text-right text-amber-700">Due</th>
+                <th className="border-b border-r bg-sky-50 px-3 py-2 text-right text-sky-700">Total</th>
+                <th className="border-b border-r bg-sky-50 px-3 py-2 text-right text-emerald-700">Paid</th>
+                <th className="border-b border-r bg-sky-50 px-3 py-2 text-right text-amber-700">Due</th>
                 <th className="border-b border-r bg-slate-100 px-3 py-2 text-right text-slate-800">Total</th>
                 <th className="border-b border-r bg-slate-100 px-3 py-2 text-right text-emerald-700">Paid</th>
                 <th className="border-b border-r bg-slate-100 px-3 py-2 text-right text-amber-700">Due</th>
@@ -684,13 +684,13 @@ function CenterInvoice() {
             </thead>
             <tbody>
               <tr className="border-t">
-                <td className="px-3 py-2 font-medium text-indigo-600">Course Fee</td>
+                <td className="px-3 py-2 font-medium text-teal-600">Course Fee</td>
                 <td className="px-3 py-2 text-right font-semibold">{fmt(footerTotals.totalAmount)}</td>
                 <td className="px-3 py-2 text-right font-semibold text-emerald-700">{fmt(footerTotals.amountPaid)}</td>
                 <td className="px-3 py-2 text-right font-semibold text-amber-700">{fmt(footerTotals.amountDue)}</td>
               </tr>
               <tr className="border-t">
-                <td className="px-3 py-2 font-medium text-violet-600">Document Charges</td>
+                <td className="px-3 py-2 font-medium text-sky-600">Document Charges</td>
                 <td className="px-3 py-2 text-right font-semibold">{fmt(footerTotals.docTotalAmount)}</td>
                 <td className="px-3 py-2 text-right font-semibold text-emerald-700">{fmt(footerTotals.docAmountPaid)}</td>
                 <td className="px-3 py-2 text-right font-semibold text-amber-700">{fmt(footerTotals.docAmountDue)}</td>

@@ -348,7 +348,7 @@ export default function PaymentCoordinatorPage() {
               ['Need Call', docCounts.needs_call, 'border-red-200 bg-red-50 text-red-700'],
               ['Payment Submitted', docCounts.submitted, 'border-amber-200 bg-amber-50 text-amber-700'],
               ['Ready / Dispatch Pending', docCounts.ready_dispatch, 'border-blue-200 bg-blue-50 text-blue-700'],
-              ['Dispatched / Not Received', docCounts.dispatched, 'border-purple-200 bg-purple-50 text-purple-700'],
+              ['Dispatched / Not Received', docCounts.dispatched, 'border-cyan-200 bg-cyan-50 text-cyan-700'],
               ['Received by Center', docCounts.delivered, 'border-emerald-200 bg-emerald-50 text-emerald-700'],
             ].map(([label, value, tone]) => (
               <div key={label} className={cn('rounded-lg border p-3', tone)}>
@@ -393,7 +393,7 @@ export default function PaymentCoordinatorPage() {
                         <div className="flex flex-wrap items-center gap-2">
                           <Link to={`/students/${row.studentId}`} className="font-semibold text-foreground hover:text-primary">{row.studentName}</Link>
                           {row.enrollmentNumber && <Badge variant="outline" className="font-mono">{row.enrollmentNumber}</Badge>}
-                          <Badge variant="outline" className={cn('border', needsCall ? 'border-red-200 bg-red-50 text-red-700' : row.bucket === 'submitted' ? 'border-amber-200 bg-amber-50 text-amber-700' : row.bucket === 'ready_dispatch' ? 'border-blue-200 bg-blue-50 text-blue-700' : row.bucket === 'dispatched' ? 'border-purple-200 bg-purple-50 text-purple-700' : row.bucket === 'delivered' ? 'border-emerald-200 bg-emerald-50 text-emerald-700' : 'border-slate-200 bg-slate-50 text-slate-700')}>
+                          <Badge variant="outline" className={cn('border', needsCall ? 'border-red-200 bg-red-50 text-red-700' : row.bucket === 'submitted' ? 'border-amber-200 bg-amber-50 text-amber-700' : row.bucket === 'ready_dispatch' ? 'border-blue-200 bg-blue-50 text-blue-700' : row.bucket === 'dispatched' ? 'border-cyan-200 bg-cyan-50 text-cyan-700' : row.bucket === 'delivered' ? 'border-emerald-200 bg-emerald-50 text-emerald-700' : 'border-slate-200 bg-slate-50 text-slate-700')}>
                             {String(row.status || '').replace(/_/g, ' ')}
                           </Badge>
                         </div>
@@ -422,7 +422,7 @@ export default function PaymentCoordinatorPage() {
                         <div className="text-xs text-muted-foreground">Last follow-up</div>
                         <div className="font-medium">{row.lastFollowup ? fmtDt(row.lastFollowup.contactedAt) : 'Not called yet'}</div>
                         {row.lastFollowup?.contactWith && (
-                          <div className="mt-0.5 text-xs font-semibold text-indigo-700">Talked to: {row.lastFollowup.contactWith}</div>
+                          <div className="mt-0.5 text-xs font-semibold text-teal-700">Talked to: {row.lastFollowup.contactWith}</div>
                         )}
                         {row.lastFollowup?.outcome && (
                           <div className="mt-0.5 text-xs font-semibold text-slate-700">{row.lastFollowup.outcome}</div>
@@ -515,9 +515,9 @@ export default function PaymentCoordinatorPage() {
                         <div className="text-[11px] text-muted-foreground">Outstanding</div>
                         <div className="font-semibold text-amber-700">{fmt(student.dueAmount)}</div>
                       </div>
-                      <div className="rounded-md border border-purple-200 bg-purple-50 px-2 py-1.5">
+                      <div className="rounded-md border border-cyan-200 bg-cyan-50 px-2 py-1.5">
                         <div className="text-[11px] text-muted-foreground">Timeline Due</div>
-                        <div className="font-semibold text-purple-700">{fmt(totalDue)}</div>
+                        <div className="font-semibold text-cyan-700">{fmt(totalDue)}</div>
                       </div>
                       {pendingVerification > 0 && (
                         <div className="rounded-md border border-orange-200 bg-orange-50 px-2 py-1.5 md:col-span-5">
@@ -789,7 +789,7 @@ export default function PaymentCoordinatorPage() {
                     setCenterSwitchOpen(false);
                     navigate('/center');
                   }}
-                  className="flex w-full items-center justify-between rounded-lg border bg-card px-4 py-3 text-left transition hover:border-indigo-200 hover:bg-indigo-50"
+                  className="flex w-full items-center justify-between rounded-lg border bg-card px-4 py-3 text-left transition hover:border-teal-200 hover:bg-teal-50"
                 >
                   <div>
                     <div className="font-semibold">{center.name || center.organisationName || 'Center'}</div>

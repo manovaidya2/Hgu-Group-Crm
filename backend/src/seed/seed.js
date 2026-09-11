@@ -39,7 +39,7 @@ const AuditLog   = require('../models/AuditLog');
   await Center.findByIdAndUpdate(centers[0]._id, { assignedCounselor: counselors[0]._id });
   await Center.findByIdAndUpdate(centers[1]._id, { assignedCounselor: counselors[1]._id });
 
-  await User.create({ name: 'Admin',        email: 'admin@edu.io',       password: 'password123', role: 'Admin',       avatarColor: '#ef4444' });
+  await User.create({ name: 'Admin',        email: 'admin@crm.io',       password: 'NewPassword@', role: 'Admin',       avatarColor: '#ef4444' });
   await User.create({ name: 'Aarav Sharma', email: 'aarav@edu.io',       password: 'password123', role: 'Counselor',   counselorId: counselors[0]._id, avatarColor: '#6366f1' });
   await User.create({ name: 'Priya Patel',  email: 'priya@edu.io',       password: 'password123', role: 'Counselor',   counselorId: counselors[1]._id, avatarColor: '#10b981' });
   await User.create({ name: 'Mumbai Center',email: 'mumbai@center.io',   password: 'password123', role: 'Center',      centerId: centers[0]._id });
@@ -52,7 +52,7 @@ const AuditLog   = require('../models/AuditLog');
   await User.create({ name: 'Bangalore Univ',email: 'btu@university.io', password: 'password123', role: 'University', universityId: universities[2]._id, avatarColor: '#f59e0b' });
 
   console.log('\n✅ Seeded successfully (multi-university)');
-  console.log('Admin:           admin@edu.io');
+  console.log('Admin:           admin@crm.io');
   console.log('Counselor 1:     aarav@edu.io');
   console.log('Counselor 2:     priya@edu.io');
   console.log('Center 1:        mumbai@center.io');

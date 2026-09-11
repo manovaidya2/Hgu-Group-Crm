@@ -12,10 +12,10 @@ import { authApi, centersApi, universitiesApi, paymentAccountsApi } from '@/lib/
 import { useAuth } from '@/context/AuthContext';
 
 const ROLE_COLORS = {
-  Admin:'bg-red-100 text-red-700', Counselor:'bg-indigo-100 text-indigo-700',
+  Admin:'bg-red-100 text-red-700', Counselor:'bg-teal-100 text-teal-700',
   ViewerCounselor:'bg-slate-100 text-slate-700',
   Center:'bg-sky-100 text-sky-700', Accountant:'bg-amber-100 text-amber-700',
-  University:'bg-purple-100 text-purple-700', Dispatch:'bg-teal-100 text-teal-700',
+  University:'bg-cyan-100 text-cyan-700', Dispatch:'bg-teal-100 text-teal-700',
   PaymentCoordinator:'bg-cyan-100 text-cyan-700',
 };
 
@@ -221,7 +221,7 @@ export default function SettingsPage() {
                     </div>
                     <div className="text-xs text-muted-foreground truncate">{u.email}</div>
                     {u.centerId?.name && <div className="text-xs text-sky-600">{u.centerId.name}</div>}
-                    {u.universityId?.name && <div className="text-xs text-purple-600">🎓 {u.universityId.name}</div>}
+                    {u.universityId?.name && <div className="text-xs text-cyan-600">🎓 {u.universityId.name}</div>}
                   </div>
                   {String(u._id) !== String(me._id||me.id) && (
                     <div className="flex gap-1 flex-shrink-0">
@@ -248,7 +248,7 @@ export default function SettingsPage() {
         <CardHeader className="pb-2">
           <div className="flex items-center justify-between">
             <CardTitle className="text-base flex items-center gap-2">
-              <CreditCard className="h-4 w-4 text-indigo-600"/>Payment Accounts
+              <CreditCard className="h-4 w-4 text-teal-600"/>Payment Accounts
             </CardTitle>
             <Button size="sm" onClick={() => { setEditAcc(null); setAccForm({ ...EMPTY_ACC }); setAccOpen(true); }}>
               <Plus className="h-4 w-4 mr-1"/>Add Account
@@ -310,7 +310,7 @@ export default function SettingsPage() {
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <Key className="h-4 w-4 text-indigo-600"/>Change My Password
+              <Key className="h-4 w-4 text-teal-600"/>Change My Password
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-3 py-2">
@@ -335,7 +335,7 @@ export default function SettingsPage() {
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setOwnPwdOpen(false)}>Cancel</Button>
-            <Button onClick={handleChangeOwnPassword} disabled={ownPwdSaving} className="bg-indigo-600 hover:bg-indigo-700">
+            <Button onClick={handleChangeOwnPassword} disabled={ownPwdSaving} className="bg-teal-600 hover:bg-teal-700">
               {ownPwdSaving && <Loader2 className="h-4 w-4 mr-1 animate-spin"/>}
               Update Password
             </Button>
@@ -379,7 +379,7 @@ export default function SettingsPage() {
                       <label key={c._id} className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-muted/50">
                         <input
                           type="checkbox"
-                          className="h-4 w-4 accent-indigo-600"
+                          className="h-4 w-4 accent-teal-600"
                           checked={checked}
                           onChange={e => setForm(p => ({
                             ...p,
@@ -430,7 +430,7 @@ export default function SettingsPage() {
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <CreditCard className="h-4 w-4 text-indigo-600"/>
+              <CreditCard className="h-4 w-4 text-teal-600"/>
               {editAcc ? 'Edit Payment Account' : 'Add Payment Account'}
             </DialogTitle>
           </DialogHeader>
@@ -494,7 +494,7 @@ export default function SettingsPage() {
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => { setAccOpen(false); setEditAcc(null); setAccForm({ ...EMPTY_ACC }); }}>Cancel</Button>
-            <Button onClick={saveAcc} disabled={saving} className="bg-indigo-600 hover:bg-indigo-700">
+            <Button onClick={saveAcc} disabled={saving} className="bg-teal-600 hover:bg-teal-700">
               {saving && <Loader2 className="h-4 w-4 mr-1 animate-spin"/>}
               {editAcc ? 'Save Changes' : 'Add Account'}
             </Button>

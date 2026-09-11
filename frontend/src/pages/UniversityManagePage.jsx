@@ -14,9 +14,9 @@ import {
 import { toast } from 'sonner';
 import { universitiesApi, authApi } from '@/lib/api';
 
-const COLORS = ['#6366f1','#10b981','#f59e0b','#ef4444','#8b5cf6','#06b6d4','#ec4899','#14b8a6'];
+const COLORS = ['#0f766e','#10b981','#f59e0b','#ef4444','#0891b2','#06b6d4','#ec4899','#14b8a6'];
 
-const initUniForm = { name:'', shortName:'', email:'', phone:'', city:'', state:'', website:'', avatarColor:'#6366f1' };
+const initUniForm = { name:'', shortName:'', email:'', phone:'', city:'', state:'', website:'', avatarColor:'#0f766e' };
 const initUserForm = { name:'', email:'', password:'' };
 
 function StatBadge({ label, value, color = 'bg-muted' }) {
@@ -73,7 +73,7 @@ export default function UniversityManagePage() {
   useEffect(() => { load(); }, [load]);
 
   const openCreate = () => { setEditUni(null); setUniForm(initUniForm); setUniOpen(true); };
-  const openEdit   = uni => { setEditUni(uni); setUniForm({ name: uni.name, shortName: uni.shortName||'', email: uni.email||'', phone: uni.phone||'', city: uni.city||'', state: uni.state||'', website: uni.website||'', avatarColor: uni.avatarColor||'#6366f1' }); setUniOpen(true); };
+  const openEdit   = uni => { setEditUni(uni); setUniForm({ name: uni.name, shortName: uni.shortName||'', email: uni.email||'', phone: uni.phone||'', city: uni.city||'', state: uni.state||'', website: uni.website||'', avatarColor: uni.avatarColor||'#0f766e' }); setUniOpen(true); };
 
   const saveUni = async () => {
     if (!uniForm.name.trim()) return toast.error('University name is required');
@@ -204,12 +204,12 @@ export default function UniversityManagePage() {
             const stats = statsMap[uni._id] || {};
             const uniUsers = uniUsersMap[String(uni._id)] || [];
             return (
-              <Card key={uni._id} className="border-l-4" style={{ borderLeftColor: uni.avatarColor || '#6366f1' }}>
+              <Card key={uni._id} className="border-l-4" style={{ borderLeftColor: uni.avatarColor || '#0f766e' }}>
                 <CardHeader className="pb-2">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-3">
                       <div className="h-10 w-10 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0"
-                           style={{ background: uni.avatarColor || '#6366f1' }}>
+                           style={{ background: uni.avatarColor || '#0f766e' }}>
                         {uni.shortName || uni.name.slice(0,2).toUpperCase()}
                       </div>
                       <div>
@@ -264,7 +264,7 @@ export default function UniversityManagePage() {
                           <div key={u._id} className={`flex items-center justify-between rounded px-2 py-1.5 ${u.isActive ? 'bg-background' : 'bg-muted/50 opacity-70'}`}>
                             <div className="flex items-center gap-2 min-w-0">
                               <div className="h-6 w-6 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
-                                   style={{ background: u.isActive ? (u.avatarColor || '#8b5cf6') : '#94a3b8' }}>
+                                   style={{ background: u.isActive ? (u.avatarColor || '#0891b2') : '#94a3b8' }}>
                                 {u.name.slice(0,1)}
                               </div>
                               <div className="min-w-0">

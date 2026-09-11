@@ -11,11 +11,11 @@ const ROLE_HOME = {
 
 const DEMO_ACCOUNTS = [
   { label: 'Admin',       email: 'admin@edu.io',       color: '#ef4444' },
-  { label: 'Counselor',   email: 'aarav@edu.io',        color: '#6366f1' },
+  { label: 'Counselor',   email: 'aarav@edu.io',        color: '#0f766e' },
   { label: 'Center',      email: 'mumbai@center.io',    color: '#06b6d4' },
   { label: 'Accountant',  email: 'accountant@edu.io',   color: '#f59e0b' },
   { label: 'Pay Coord',    email: 'paymentcoordinator@edu.io', color: '#14b8a6' },
-  { label: 'University',  email: 'university@edu.io',   color: '#8b5cf6' },
+  { label: 'University',  email: 'university@edu.io',   color: '#0891b2' },
   { label: 'Dispatch',    email: 'dispatch@edu.io',     color: '#10b981' },
 ];
 
@@ -45,16 +45,23 @@ const LockIcon = () => (
   </svg>
 );
 
+const THEME = {
+  mark: '#0f766e',
+  markDark: '#115e59',
+  markLight: '#14b8a6',
+  accent: '#f59e0b',
+  panelGradient: 'linear-gradient(145deg, #042f2e 0%, #0f766e 54%, #164e63 100%)',
+  buttonGradient: 'linear-gradient(135deg, #0f766e 0%, #0891b2 100%)',
+  buttonShadow: '0 4px 16px rgba(15,118,110,0.32), 0 1px 3px rgba(8,145,178,0.14)',
+};
+
 const LogoMark = ({ size = 42 }) => (
-  <svg width={size} height={size} viewBox="0 0 42 42" fill="none">
-    <rect width="42" height="42" rx="11" fill="#4f46e5"/>
-    <path d="M10 22 L21 12 L32 22" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-    <rect x="16" y="22" width="10" height="9" rx="1.5" fill="white" opacity="0.95"/>
-    <rect x="13" y="19" width="6" height="6" rx="1" fill="white" opacity="0.4"/>
-    <rect x="23" y="19" width="6" height="6" rx="1" fill="white" opacity="0.4"/>
-    <circle cx="31" cy="14" r="4" fill="#fbbf24"/>
-    <path d="M29.5 14 L31 15.5 L33.5 12.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
+  <span
+    className="inline-flex items-center justify-center overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-white/30"
+    style={{ width: size, height: size }}
+  >
+    <img src="/hgu-logo.png" alt="HGU Group" className="h-full w-full object-contain" />
+  </span>
 );
 
 const FeatureRow = ({ icon, title, desc }) => (
@@ -95,16 +102,16 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen w-full flex bg-white overflow-y-auto relative text-slate-800">
+    <div className="min-h-screen w-full flex bg-[#f8faf9] overflow-y-auto relative text-slate-800">
 
       {/* Crosshatch */}
       <div className="absolute inset-0 z-0 pointer-events-none" style={{
-        backgroundImage: 'repeating-linear-gradient(22.5deg, transparent, transparent 2px, rgba(75,85,99,0.04) 2px, rgba(75,85,99,0.04) 3px, transparent 3px, transparent 8px), repeating-linear-gradient(67.5deg, transparent, transparent 2px, rgba(107,114,128,0.03) 2px, rgba(107,114,128,0.03) 3px, transparent 3px, transparent 8px)',
+        backgroundImage: 'repeating-linear-gradient(22.5deg, transparent, transparent 2px, rgba(15,118,110,0.035) 2px, rgba(15,118,110,0.035) 3px, transparent 3px, transparent 8px), repeating-linear-gradient(67.5deg, transparent, transparent 2px, rgba(20,184,166,0.03) 2px, rgba(20,184,166,0.03) 3px, transparent 3px, transparent 8px)',
       }}/>
 
       {/* LEFT PANEL */}
       <div className="hidden lg:flex w-[46%] min-h-screen flex-col justify-between px-10 py-10 relative z-10 overflow-hidden"
-        style={{ background: 'linear-gradient(145deg, #312e81 0%, #4f46e5 50%, #6d28d9 100%)' }}>
+        style={{ background: THEME.panelGradient }}>
 
         {/* Grid overlay */}
         <div className="absolute inset-0 pointer-events-none" style={{
@@ -112,17 +119,17 @@ export default function LoginPage() {
           backgroundSize: '40px 40px',
         }}/>
         <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.4) 0%, transparent 65%)' }}/>
+          style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.24) 0%, transparent 65%)' }}/>
         <div className="absolute -bottom-24 -left-16 w-72 h-72 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.3) 0%, transparent 65%)' }}/>
+          style={{ background: 'radial-gradient(circle, rgba(20,184,166,0.28) 0%, transparent 65%)' }}/>
 
         {/* Logo */}
         <div className="flex items-center gap-3 relative z-10">
           <LogoMark size={44}/>
           <div>
-            <div className="text-xl font-black text-white leading-none tracking-tight">Counseling Ops</div>
+            <div className="text-xl font-black text-white leading-none tracking-tight">HGU Group</div>
             <div className="text-[10px] font-bold tracking-[0.2em] uppercase mt-1"
-              style={{ color: 'rgba(255,255,255,0.45)' }}>CRM Platform</div>
+              style={{ color: 'rgba(255,255,255,0.45)' }}>Official Portal</div>
           </div>
         </div>
 
@@ -135,8 +142,8 @@ export default function LoginPage() {
               Multi-University Architecture
             </div>
             <h2 className="text-[2.2rem] font-black text-white leading-tight tracking-tight">
-              Admissions,<br/>
-              <span style={{ color: 'rgba(196,181,253,0.9)' }}>streamlined.</span>
+              HGU Group<br/>
+              <span style={{ color: 'rgba(153,246,228,0.92)' }}>CRM portal.</span>
             </h2>
             <p className="mt-3 text-sm leading-relaxed max-w-xs"
               style={{ color: 'rgba(255,255,255,0.5)' }}>
@@ -172,7 +179,7 @@ export default function LoginPage() {
           <div className="flex items-center gap-3 mb-8 lg:hidden">
             <LogoMark size={36}/>
             <div>
-              <div className="text-base font-black text-slate-900">Counseling Ops CRM</div>
+              <div className="text-base font-black text-slate-900">HGU Group CRM</div>
               <div className="text-[9px] font-bold text-slate-400 tracking-widest uppercase">Platform</div>
             </div>
           </div>
@@ -190,7 +197,7 @@ export default function LoginPage() {
                 Email Address
               </label>
               <div className={`flex items-center bg-white border rounded-xl transition-all duration-200 ${
-                focused === 'email' ? 'border-indigo-500 ring-4 ring-indigo-500/10 shadow-sm' : 'border-slate-200 hover:border-slate-300'
+                focused === 'email' ? 'border-teal-600 ring-4 ring-teal-600/10 shadow-sm' : 'border-slate-200 hover:border-teal-200'
               }`}>
                 <span className="pl-3.5 text-slate-400 flex-shrink-0"><MailIcon/></span>
                 <input type="email" value={email} onChange={e => setEmail(e.target.value)}
@@ -205,7 +212,7 @@ export default function LoginPage() {
                 Password
               </label>
               <div className={`flex items-center bg-white border rounded-xl transition-all duration-200 ${
-                focused === 'password' ? 'border-indigo-500 ring-4 ring-indigo-500/10 shadow-sm' : 'border-slate-200 hover:border-slate-300'
+                focused === 'password' ? 'border-teal-600 ring-4 ring-teal-600/10 shadow-sm' : 'border-slate-200 hover:border-teal-200'
               }`}>
                 <span className="pl-3.5 text-slate-400 flex-shrink-0"><LockIcon/></span>
                 <input type={show ? 'text' : 'password'} value={password}
@@ -223,8 +230,8 @@ export default function LoginPage() {
             <button type="submit" disabled={loading}
               className="w-full py-3 rounded-xl font-bold text-sm text-white flex items-center justify-center gap-2 transition-all duration-200 active:scale-[0.98] disabled:opacity-70 mt-1"
               style={{
-                background: 'linear-gradient(135deg, #4f46e5 0%, #6d28d9 100%)',
-                boxShadow: '0 4px 16px rgba(79,70,229,0.35), 0 1px 3px rgba(79,70,229,0.12)',
+                background: THEME.buttonGradient,
+                boxShadow: THEME.buttonShadow,
               }}>
               {loading ? (
                 <>
@@ -266,7 +273,7 @@ export default function LoginPage() {
           </div> */}
 
           <p className="text-center text-[10.5px] text-slate-400 mt-5">
-            © 2026 Counseling Ops CRM · All rights reserved
+            © 2026 HGU Group CRM · All rights reserved
           </p>
         </div>
       </div>

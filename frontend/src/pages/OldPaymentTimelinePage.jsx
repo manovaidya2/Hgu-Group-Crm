@@ -307,9 +307,9 @@ export default function OldPaymentTimelinePage() {
                         <div className="text-[11px] text-muted-foreground">Outstanding</div>
                         <div className="font-semibold text-amber-700">{fmt(student.dueAmount)}</div>
                       </div>
-                      <div className="rounded-md border border-purple-200 bg-purple-50 px-2 py-1.5">
+                      <div className="rounded-md border border-cyan-200 bg-cyan-50 px-2 py-1.5">
                         <div className="text-[11px] text-muted-foreground">Timeline Due</div>
-                        <div className="font-semibold text-purple-700">{fmt(pendingTimeline)}</div>
+                        <div className="font-semibold text-cyan-700">{fmt(pendingTimeline)}</div>
                       </div>
                       {pendingVerification > 0 && (
                         <div className="rounded-md border border-orange-200 bg-orange-50 px-2 py-1.5 md:col-span-5">

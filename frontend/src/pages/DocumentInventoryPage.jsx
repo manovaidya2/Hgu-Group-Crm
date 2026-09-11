@@ -482,7 +482,7 @@ export default function DocumentInventoryPage() {
                   </div>
                   <div className="flex flex-wrap gap-2 mt-1">
                     {student.enrollmentNumber && <span className="text-xs font-mono bg-emerald-50 text-emerald-700 border border-emerald-200 rounded px-2 py-0.5">{student.enrollmentNumber}</span>}
-                    {student.university?.name && <span className="text-xs bg-purple-50 text-purple-700 border border-purple-200 rounded px-2 py-0.5">{student.university.name}</span>}
+                    {student.university?.name && <span className="text-xs bg-cyan-50 text-cyan-700 border border-cyan-200 rounded px-2 py-0.5">{student.university.name}</span>}
                     <span className="text-xs bg-slate-50 text-slate-600 border rounded px-2 py-0.5">{receivedCount}/{docs.length} received</span>
                     {requestedCount > 0 && <span className="text-xs bg-blue-50 text-blue-700 border border-blue-200 rounded px-2 py-0.5">{requestedCount} requested</span>}
                   </div>
@@ -517,7 +517,7 @@ export default function DocumentInventoryPage() {
                             type="checkbox"
                             checked={selectedDocIds.includes(String(doc._id))}
                             onChange={() => toggleDocSelection(doc._id)}
-                            className="mt-1 h-4 w-4 accent-indigo-600"
+                            className="mt-1 h-4 w-4 accent-teal-600"
                             aria-label={`Select ${doc.name} for CSV`}
                           />
                           <div>
@@ -587,7 +587,7 @@ export default function DocumentInventoryPage() {
                             type="checkbox"
                             checked={selectedDocIds.includes(String(doc._id))}
                             onChange={() => toggleDocSelection(doc._id)}
-                            className="mt-1 h-4 w-4 accent-indigo-600"
+                            className="mt-1 h-4 w-4 accent-teal-600"
                             aria-label={`Select ${doc.name} for CSV`}
                           />
                           <div>

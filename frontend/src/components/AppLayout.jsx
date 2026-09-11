@@ -80,11 +80,11 @@ const NAV_CONFIG = {
 
 const ROLE_COLORS = {
   Admin:      'bg-red-500',
-  Counselor:  'bg-indigo-500',
+  Counselor:  'bg-teal-500',
   ViewerCounselor: 'bg-slate-500',
   Center:     'bg-sky-500',
   Accountant: 'bg-amber-500',
-  University: 'bg-purple-500',
+  University: 'bg-cyan-500',
   Dispatch:   'bg-teal-500',
   PaymentCoordinator: 'bg-cyan-500',
 };
@@ -142,11 +142,11 @@ export function AppLayout() {
       )}>
         {/* Brand */}
         <div className="flex h-14 items-center gap-3 border-b px-4">
-          <div className={cn('h-7 w-7 rounded-lg flex items-center justify-center text-white text-xs font-bold shrink-0', roleColor)}>
-            {user?.role?.[0]}
+          <div className="h-8 w-8 rounded-lg flex items-center justify-center overflow-hidden bg-white ring-1 ring-border shrink-0">
+            <img src="/hgu-logo.png" alt="HGU Group" className="h-full w-full object-contain" />
           </div>
           <div className="flex-1 min-w-0">
-            <div className="text-sm font-semibold leading-none">EduCRM</div>
+            <div className="text-sm font-semibold leading-none">HGU Group</div>
             <div className="text-xs text-muted-foreground mt-0.5 truncate">
               {user?.role === 'University' && user?.universityId
                 ? typeof user.universityId === 'object'
@@ -228,7 +228,7 @@ export function AppLayout() {
                   <span className="text-sm font-semibold">Notifications</span>
                   <div className="flex items-center gap-2">
                     {unread > 0 && (
-                      <button onClick={markAllRead} className="text-xs text-indigo-600 hover:text-indigo-800 font-medium">
+                      <button onClick={markAllRead} className="text-xs text-teal-600 hover:text-teal-800 font-medium">
                         Mark all read
                       </button>
                     )}

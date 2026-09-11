@@ -16,9 +16,9 @@ import { useAuth } from '@/context/AuthContext';
 
 const STATUS_COLORS = {
   Draft: 'bg-gray-100 text-gray-700', Submitted: 'bg-blue-100 text-blue-700',
-  Changes_Requested: 'bg-amber-100 text-amber-700', Counselor_Approved: 'bg-indigo-100 text-indigo-700',
+  Changes_Requested: 'bg-amber-100 text-amber-700', Counselor_Approved: 'bg-teal-100 text-teal-700',
   Rejected: 'bg-red-100 text-red-700', Accountant_Pending: 'bg-amber-100 text-amber-700',
-  Sent_To_University: 'bg-purple-100 text-purple-700', Enrolled: 'bg-emerald-100 text-emerald-700',
+  Sent_To_University: 'bg-cyan-100 text-cyan-700', Enrolled: 'bg-emerald-100 text-emerald-700',
   University_Rejected: 'bg-orange-100 text-orange-700',
   Cancelled: 'bg-slate-100 text-slate-600',
 };
@@ -448,7 +448,7 @@ export default function StudentsPage() {
               <Loader2 className="h-3 w-3 animate-spin"/>Loading…
             </span>
           )}
-          {someSelected && <span className="ml-2 text-sm font-normal text-indigo-600">{selected.size} selected</span>}
+          {someSelected && <span className="ml-2 text-sm font-normal text-teal-600">{selected.size} selected</span>}
         </h1>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={() => setCsvOpen(true)}>
@@ -493,9 +493,9 @@ export default function StudentsPage() {
       {/* Select All bar */}
       {!loading && students.length > 0 && (
         <div className="flex items-center gap-3 px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg">
-          <button onClick={toggleAll} className="flex items-center gap-2 text-sm text-slate-600 hover:text-indigo-600 transition-colors">
+          <button onClick={toggleAll} className="flex items-center gap-2 text-sm text-slate-600 hover:text-teal-600 transition-colors">
             {allSelected
-              ? <CheckSquare className="h-4 w-4 text-indigo-600"/>
+              ? <CheckSquare className="h-4 w-4 text-teal-600"/>
               : <Square className="h-4 w-4"/>}
             {allSelected ? 'Deselect page' : 'Select page'}
           </button>
@@ -523,22 +523,22 @@ export default function StudentsPage() {
         <div className="space-y-2">
           {students.map(s => (
             <Card key={s._id}
-              className={`transition-colors cursor-pointer ${selected.has(s._id) ? 'border-indigo-400 bg-indigo-50/30' : 'hover:border-primary/50'}`}>
+              className={`transition-colors cursor-pointer ${selected.has(s._id) ? 'border-teal-400 bg-teal-50/30' : 'hover:border-primary/50'}`}>
               <CardContent className="p-4">
                 <div className="flex items-center gap-3">
                   <button
                     onClick={e => { e.stopPropagation(); toggleOne(s._id); }}
-                    className="flex-shrink-0 text-slate-300 hover:text-indigo-500 transition-colors"
+                    className="flex-shrink-0 text-slate-300 hover:text-teal-500 transition-colors"
                   >
                     {selected.has(s._id)
-                      ? <CheckSquare className="h-4 w-4 text-indigo-600"/>
+                      ? <CheckSquare className="h-4 w-4 text-teal-600"/>
                       : <Square className="h-4 w-4"/>}
                   </button>
                   {isAdmin && (
                     <>
                       <button
                         onClick={e => { e.stopPropagation(); openTransfer(s); }}
-                        className="flex-shrink-0 text-slate-300 hover:text-indigo-600 transition-colors p-1"
+                        className="flex-shrink-0 text-slate-300 hover:text-teal-600 transition-colors p-1"
                         title="Transfer student to another center"
                       >
                         <ArrowRightLeft className="h-4 w-4"/>
@@ -598,7 +598,7 @@ export default function StudentsPage() {
               <div className="font-medium text-slate-700">Students to export:</div>
               <div className="text-slate-500">
                 {selected.size > 0
-                  ? <span className="text-indigo-600 font-semibold">{selected.size} selected student{selected.size > 1 ? 's' : ''}</span>
+                  ? <span className="text-teal-600 font-semibold">{selected.size} selected student{selected.size > 1 ? 's' : ''}</span>
                   : <span>All <b>{studentsTotal}</b> students (current filters)</span>}
               </div>
               {centerF !== 'all' && <div className="text-xs text-slate-400">Center: {centers.find(c=>c._id===centerF)?.name}</div>}
@@ -639,7 +639,7 @@ export default function StudentsPage() {
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setCsvOpen(false)}>Cancel</Button>
-            <Button onClick={doExportCSV} disabled={csvLoading} className="bg-indigo-600 hover:bg-indigo-700">
+            <Button onClick={doExportCSV} disabled={csvLoading} className="bg-teal-600 hover:bg-teal-700">
               {csvLoading ? <><Loader2 className="h-4 w-4 mr-1.5 animate-spin"/>Preparing…</> : <><Download className="h-4 w-4 mr-1.5"/>Download CSV</>}
             </Button>
           </DialogFooter>
@@ -719,7 +719,7 @@ export default function StudentsPage() {
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setTransferOpen(false)}>Cancel</Button>
-            <Button onClick={handleTransfer} disabled={transferLoading || !transferCenterId || !transferTargetCenter?.assignedCounselor} className="bg-indigo-600 hover:bg-indigo-700">
+            <Button onClick={handleTransfer} disabled={transferLoading || !transferCenterId || !transferTargetCenter?.assignedCounselor} className="bg-teal-600 hover:bg-teal-700">
               {transferLoading && <Loader2 className="h-4 w-4 mr-1 animate-spin"/>}
               Transfer Student
             </Button>
@@ -930,7 +930,7 @@ export default function StudentsPage() {
 
           <DialogFooter>
             <Button variant="outline" onClick={() => setExistingOpen(false)}>Cancel</Button>
-            <Button onClick={saveExistingAdmission} disabled={existingSaving} className="bg-indigo-600 hover:bg-indigo-700">
+            <Button onClick={saveExistingAdmission} disabled={existingSaving} className="bg-teal-600 hover:bg-teal-700">
               {existingSaving && <Loader2 className="h-4 w-4 mr-1 animate-spin"/>}
               Save Existing Admission
             </Button>

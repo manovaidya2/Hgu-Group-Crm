@@ -237,7 +237,7 @@ export default function AccountLedgerPage() {
       <div className="flex min-w-0 flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="flex items-center gap-2 text-xl font-semibold">
-            <FileSpreadsheet className="h-5 w-5 text-indigo-600" />
+            <FileSpreadsheet className="h-5 w-5 text-teal-600" />
             Account Ledger
           </h1>
           <div className="text-xs text-muted-foreground">All students billing ledger</div>
@@ -248,17 +248,17 @@ export default function AccountLedgerPage() {
         </Button>
       </div>
       {refreshing && (
-        <div className="rounded-lg border border-indigo-100 bg-indigo-50 px-3 py-2 text-xs text-indigo-700">
+        <div className="rounded-lg border border-teal-100 bg-teal-50 px-3 py-2 text-xs text-teal-700">
           Loading complete ledger in background...
         </div>
       )}
 
       <div className="space-y-2">
-        <div className="text-xs font-semibold uppercase tracking-wide text-indigo-500">Course Fee</div>
+        <div className="text-xs font-semibold uppercase tracking-wide text-teal-500">Course Fee</div>
         <div className="grid min-w-0 gap-3 sm:grid-cols-3">
-          <div className="min-w-0 rounded-lg border bg-indigo-50 px-4 py-3">
-            <div className="text-xs font-medium text-indigo-600">Total Amount</div>
-            <div className="truncate text-lg font-bold text-indigo-700">{fmt(totals.totalAmount)}</div>
+          <div className="min-w-0 rounded-lg border bg-teal-50 px-4 py-3">
+            <div className="text-xs font-medium text-teal-600">Total Amount</div>
+            <div className="truncate text-lg font-bold text-teal-700">{fmt(totals.totalAmount)}</div>
           </div>
           <div className="min-w-0 rounded-lg border bg-emerald-50 px-4 py-3">
             <div className="text-xs font-medium text-emerald-600">Amount Paid</div>
@@ -269,11 +269,11 @@ export default function AccountLedgerPage() {
             <div className="truncate text-lg font-bold text-amber-700">{fmt(totals.amountDue)}</div>
           </div>
         </div>
-        <div className="pt-1 text-xs font-semibold uppercase tracking-wide text-violet-500">Document Charges</div>
+        <div className="pt-1 text-xs font-semibold uppercase tracking-wide text-sky-500">Document Charges</div>
         <div className="grid min-w-0 gap-3 sm:grid-cols-3">
-          <div className="min-w-0 rounded-lg border bg-violet-50 px-4 py-3">
-            <div className="text-xs font-medium text-violet-600">Doc Total</div>
-            <div className="truncate text-lg font-bold text-violet-700">{fmt(totals.docTotalAmount)}</div>
+          <div className="min-w-0 rounded-lg border bg-sky-50 px-4 py-3">
+            <div className="text-xs font-medium text-sky-600">Doc Total</div>
+            <div className="truncate text-lg font-bold text-sky-700">{fmt(totals.docTotalAmount)}</div>
           </div>
           <div className="min-w-0 rounded-lg border bg-emerald-50 px-4 py-3">
             <div className="text-xs font-medium text-emerald-600">Doc Paid</div>
@@ -370,20 +370,20 @@ export default function AccountLedgerPage() {
                 <th className="sticky left-0 z-30 border-b border-r bg-slate-100 px-3 py-2" rowSpan="2">Student Name</th>
                 <th className="border-b border-r px-3 py-2" rowSpan="2">Enrollment Number</th>
                 <th className="border-b border-r px-3 py-2" rowSpan="2">Course</th>
-                <th className="border-b border-r bg-indigo-50 px-3 py-2 text-right text-indigo-700" rowSpan="2">Fee Total</th>
-                <th className="border-b border-r bg-indigo-50 px-3 py-2 text-right text-indigo-700" rowSpan="2">Fee Paid</th>
-                <th className="border-b border-r bg-indigo-50 px-3 py-2 text-right text-indigo-700" rowSpan="2">Fee Due</th>
-                <th className="border-b border-r bg-violet-50 px-3 py-2 text-right text-violet-700" rowSpan="2">Doc Total</th>
-                <th className="border-b border-r bg-violet-50 px-3 py-2 text-right text-violet-700" rowSpan="2">Doc Paid</th>
-                <th className="border-b border-r bg-violet-50 px-3 py-2 text-right text-violet-700" rowSpan="2">Doc Due</th>
+                <th className="border-b border-r bg-teal-50 px-3 py-2 text-right text-teal-700" rowSpan="2">Fee Total</th>
+                <th className="border-b border-r bg-teal-50 px-3 py-2 text-right text-teal-700" rowSpan="2">Fee Paid</th>
+                <th className="border-b border-r bg-teal-50 px-3 py-2 text-right text-teal-700" rowSpan="2">Fee Due</th>
+                <th className="border-b border-r bg-sky-50 px-3 py-2 text-right text-sky-700" rowSpan="2">Doc Total</th>
+                <th className="border-b border-r bg-sky-50 px-3 py-2 text-right text-sky-700" rowSpan="2">Doc Paid</th>
+                <th className="border-b border-r bg-sky-50 px-3 py-2 text-right text-sky-700" rowSpan="2">Doc Due</th>
                 <th className="border-b border-r bg-slate-200 px-3 py-2 text-right text-slate-800" rowSpan="2">Grand Due</th>
                 {Array.from({ length: maxTransactions }).map((_, index) => (
-                  <th key={`fee-${index}`} className="border-b border-r bg-indigo-50 px-3 py-2 text-center font-bold text-indigo-700" colSpan="7">
+                  <th key={`fee-${index}`} className="border-b border-r bg-teal-50 px-3 py-2 text-center font-bold text-teal-700" colSpan="7">
                     Fee Payment {index + 1}
                   </th>
                 ))}
                 {Array.from({ length: maxDocTransactions }).map((_, index) => (
-                  <th key={`doc-${index}`} className="border-b border-r bg-violet-50 px-3 py-2 text-center font-bold text-violet-700" colSpan="8">
+                  <th key={`doc-${index}`} className="border-b border-r bg-sky-50 px-3 py-2 text-center font-bold text-sky-700" colSpan="8">
                     Doc Payment {index + 1}
                   </th>
                 ))}
@@ -391,12 +391,12 @@ export default function AccountLedgerPage() {
               <tr>
                 {Array.from({ length: maxTransactions }).flatMap((_, index) => (
                   ['Amount', 'Mode', 'UTR', 'Paid Date', 'Record Added Date', 'Verified Date', 'Paid To'].map(label => (
-                    <th key={`fee-${index}-${label}`} className="border-b border-r bg-indigo-50 px-3 py-2 font-semibold text-indigo-700">{label}</th>
+                    <th key={`fee-${index}-${label}`} className="border-b border-r bg-teal-50 px-3 py-2 font-semibold text-teal-700">{label}</th>
                   ))
                 ))}
                 {Array.from({ length: maxDocTransactions }).flatMap((_, index) => (
                   ['Document', 'Amount', 'Mode', 'UTR', 'Paid Date', 'Verified Date', 'Status', 'Paid To'].map(label => (
-                    <th key={`doc-${index}-${label}`} className="border-b border-r bg-violet-50 px-3 py-2 font-semibold text-violet-700">{label}</th>
+                    <th key={`doc-${index}-${label}`} className="border-b border-r bg-sky-50 px-3 py-2 font-semibold text-sky-700">{label}</th>
                   ))
                 ))}
               </tr>
@@ -414,7 +414,7 @@ export default function AccountLedgerPage() {
                   <td className="min-w-28 border-b border-r px-3 py-2 text-right font-semibold">{fmt(row.totalAmount)}</td>
                   <td className="min-w-28 border-b border-r px-3 py-2 text-right font-semibold text-emerald-700">{fmt(row.amountPaid)}</td>
                   <td className="min-w-28 border-b border-r px-3 py-2 text-right font-semibold text-amber-700">{fmt(row.amountDue)}</td>
-                  <td className="min-w-28 border-b border-r px-3 py-2 text-right font-semibold text-violet-700">{fmt(row.docTotalAmount)}</td>
+                  <td className="min-w-28 border-b border-r px-3 py-2 text-right font-semibold text-sky-700">{fmt(row.docTotalAmount)}</td>
                   <td className="min-w-28 border-b border-r px-3 py-2 text-right font-semibold text-emerald-700">{fmt(row.docAmountPaid)}</td>
                   <td className="min-w-28 border-b border-r px-3 py-2 text-right font-semibold text-amber-700">{fmt(row.docAmountDue)}</td>
                   <td className="min-w-28 border-b border-r bg-slate-50 px-3 py-2 text-right font-bold text-slate-800">{fmt(Number(row.amountDue || 0) + Number(row.docAmountDue || 0))}</td>
@@ -433,7 +433,7 @@ export default function AccountLedgerPage() {
                   {Array.from({ length: maxDocTransactions }).flatMap((_, index) => {
                     const tx = row.docTransactions?.[index];
                     return [
-                      <td key={`doc-${index}-name`} className="min-w-44 border-b border-r px-3 py-2 font-medium text-violet-800">{tx?.documentName || ''}{tx?.requestType ? <span className="ml-1 text-[10px] text-slate-400">({tx.requestType})</span> : null}</td>,
+                      <td key={`doc-${index}-name`} className="min-w-44 border-b border-r px-3 py-2 font-medium text-sky-800">{tx?.documentName || ''}{tx?.requestType ? <span className="ml-1 text-[10px] text-slate-400">({tx.requestType})</span> : null}</td>,
                       <td key={`doc-${index}-amount`} className="min-w-28 border-b border-r px-3 py-2 text-right font-semibold text-emerald-700">{tx ? fmt(tx.amount) : ''}</td>,
                       <td key={`doc-${index}-mode`} className="min-w-28 border-b border-r px-3 py-2">{tx?.mode || ''}</td>,
                       <td key={`doc-${index}-utr`} className="min-w-40 border-b border-r px-3 py-2 font-mono">{tx?.utrRef || ''}</td>,

@@ -22,8 +22,8 @@ const DOC_STATUS = {
   Sent_To_University:   { label:'Pending Action',     color:'bg-amber-100 text-amber-700',    dot:'bg-amber-500' },
   University_Dispatched:{ label:'Sent to Dispatch',   color:'bg-teal-100 text-teal-700',      dot:'bg-teal-500' },
   Dispatch_Received:    { label:'Dispatch Received',  color:'bg-blue-100 text-blue-700',      dot:'bg-blue-500' },
-  Scanned:              { label:'Scanned',             color:'bg-indigo-100 text-indigo-700',  dot:'bg-indigo-500' },
-  Counselor_Received:   { label:'With Counselor',     color:'bg-purple-100 text-purple-700',  dot:'bg-purple-500' },
+  Scanned:              { label:'Scanned',             color:'bg-teal-100 text-teal-700',  dot:'bg-teal-500' },
+  Counselor_Received:   { label:'With Counselor',     color:'bg-cyan-100 text-cyan-700',  dot:'bg-cyan-500' },
   Payment_Verified:     { label:'Payment Verified',   color:'bg-green-100 text-green-700',    dot:'bg-green-500' },
   Dispatched:           { label:'Dispatched to Center',color:'bg-emerald-100 text-emerald-700',dot:'bg-emerald-500' },
   Delivered:            { label:'Delivered',           color:'bg-emerald-100 text-emerald-700',dot:'bg-emerald-600' },
@@ -182,7 +182,7 @@ function StudentModal({ student, docs, onClose, onAssign, onReject }) {
             </Button>
           )}
           {!isEnrolled && onAssign && (
-            <Button className="bg-purple-600 hover:bg-purple-700" onClick={() => { onClose(); onAssign(student); }}>
+            <Button className="bg-cyan-600 hover:bg-cyan-700" onClick={() => { onClose(); onAssign(student); }}>
               <BadgeCheck className="h-4 w-4 mr-1"/>Assign Enrollment
             </Button>
           )}
@@ -391,7 +391,7 @@ export default function UniversityPage() {
       <div className="flex items-start justify-between gap-3 flex-wrap">
         <div>
           <h1 className="text-2xl font-bold flex items-center gap-2">
-            <BookOpen className="h-6 w-6 text-purple-600"/>University Portal
+            <BookOpen className="h-6 w-6 text-cyan-600"/>University Portal
           </h1>
           <p className="text-muted-foreground text-sm mt-0.5">
             Manage student admissions and document requests
@@ -418,7 +418,7 @@ export default function UniversityPage() {
           label="Total Students"
           value={allStudents.length}
           sub={`${pending.length} pending · ${enrolled.length} enrolled`}
-          color="text-purple-600"
+          color="text-cyan-600"
         />
         <StatCard
           icon={BadgeCheck}
@@ -614,7 +614,7 @@ export default function UniversityPage() {
                         <Button variant="ghost" size="sm" onClick={() => setModalStudent(s)}>
                           <Eye className="h-3.5 w-3.5"/>
                         </Button>
-                        <Button size="sm" className="bg-purple-600 hover:bg-purple-700"
+                        <Button size="sm" className="bg-cyan-600 hover:bg-cyan-700"
                           onClick={() => { setSelStudent(s); setEnrNum(''); setEnrOpen(true); }}>
                           <BadgeCheck className="h-3.5 w-3.5 mr-1"/>Assign
                         </Button>
@@ -744,7 +744,7 @@ export default function UniversityPage() {
                           type="checkbox"
                           checked={selectedDocIds.includes(String(d._id))}
                           onChange={() => toggleDocSelection(d._id)}
-                          className="mt-1 h-4 w-4 accent-purple-600"
+                          className="mt-1 h-4 w-4 accent-cyan-600"
                         />
                         <div>
                         <div className="font-medium">{d.name}</div>
